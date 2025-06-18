@@ -17,14 +17,16 @@ params:
       buttons:
          - name: Resume
            url: "/posts/resume"
-         - name: Github
-           url: "https://github.com/saketbyte"
-         - name: WordPress
+         - name: Tech Bytes
+           url: "/posts"
+         - name: Personal Blog
            url: "https://thoughtb.wordpress.com/"
 
    socialIcons: # optional
       - name: "Linkedin"
         url: "https://www.linkedin.com/in/saketbyte/"
+      - name: "Github"
+        url: "https://github.com/saketbyte"
       - name: "Instagram"
         url: "https://www.instagram.com/samriddh._.singh/"
       - name: "Twitter"

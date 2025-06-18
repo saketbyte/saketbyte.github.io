@@ -14,10 +14,11 @@ categories: ["Portfolio"]
 **Mobile**: +91-7018281212
 **GitHub**: [github.com/saketbyte](https://github.com/saketbyte/)
 **Leetcode**: [saketbyte](https://leetcode.com/u/saketbyte/)
+**PDF**: [Drive](https://drive.google.com/drive/folders/1u6sQJhkxPprKNni_veC60CL-tUjXw6wW)
 
 ---
 
-## 🎓 Education
+## Education
 
 **National Institute of Technology, Hamirpur** — _Himachal Pradesh, India_
 **Bachelor of Technology**
@@ -28,15 +29,15 @@ _July 2019 - June 2023_
 
 ---
 
-## 🛠 Skills Summary
+## Skills Summary
 
 -  **Languages**: JavaScript, Python, C/C++, SQL
--  **Tech Stack**: ReactJS, Redux, Tailwind CSS, HTML, NodeJS, ExpressJS, MongoDB, SQL, FastAPI, PyTorch, Keras
--  **Tools**: Agile, Docker, Git, Azure, MSSQL, WordPress, Tableau
+-  **Tech Stack**: ReactJS, Redux, Tailwind CSS, HTML, NodeJS, ExpressJS, MongoDB, Material UI FastAPI
+-  **Tools**: Agile, Docker, Git, Azure, MSSQL, WordPress, Tableau, Hugo, Github Actions
 
 ---
 
-## 💼 Experience
+## Experience
 
 ### Tata Consultancy Services — _Chennai, India_
 
@@ -71,6 +72,13 @@ _May 2022 – July 2022_
 
 ## 💡 Projects
 
+### [Omniblade](https://github.com/saketbyte/Omniblade)
+
+_ReactJS, Tailwind CSS, Webpack, DOM Manipulation_
+Building a Chrome extension currently which provides multi-text clipboard, gemini AI, weather, Wiki, and google search in it's window without having to juggle between tabs. Just one click away.
+
+---
+
 ### [E-Commerce Web App](https://ecommerce-website-h1qr.vercel.app/)
 
 _ReactJS, NodeJS, ExpressJS, MongoDB, Tailwind CSS_
@@ -96,7 +104,7 @@ Built a neural style transfer pipeline using pre-trained VGG19. Tuned hyperparam
    -  Computer Networks (NPTEL)
 
 -  **Non-Technical**:
-   -  Guitar Scales and Progressions
+   -  Guitar Scales and Chord Progressions
    -  Social Psychology (Honours)
 
 ---
