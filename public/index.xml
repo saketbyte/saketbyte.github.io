@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>saketbyte</title>
-    <link>http://localhost:1313/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content on saketbyte</description>
     <generator>Hugo -- 0.147.8</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 18 Jun 2025 18:19:42 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resume</title>
-      <link>http://localhost:1313/posts/resume/</link>
+      <link>//localhost:1313/posts/resume/</link>
       <pubDate>Wed, 18 Jun 2025 18:19:42 +0530</pubDate>
-      <guid>http://localhost:1313/posts/resume/</guid>
+      <guid>//localhost:1313/posts/resume/</guid>
       <description>Professional Resume</description>
     </item>
     <item>
       <title>Trying</title>
-      <link>http://localhost:1313/posts/trying/</link>
+      <link>//localhost:1313/posts/trying/</link>
       <pubDate>Wed, 18 Jun 2025 18:17:26 +0530</pubDate>
-      <guid>http://localhost:1313/posts/trying/</guid>
+      <guid>//localhost:1313/posts/trying/</guid>
       <description>A short summary of the post</description>
     </item>
   </channel>
