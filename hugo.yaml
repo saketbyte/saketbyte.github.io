@@ -1,0 +1,61 @@
+baseURL: "https://saketbyte.github.io/"
+languageCode: en-us
+title: saketbyte
+theme: PaperMod
+
+params:
+   ShowReadingTime: true
+   ShowBreadCrumbs: true
+   profileMode:
+      enabled: true
+      title: "Samriddh Singh" # optional default will be site title
+      subtitle: "saketbyte"
+      imageUrl: "img/profile.jpg" # optional
+      imageTitle: "Profile" # optional
+      imageWidth: 130 # custom size
+      imageHeight: 120 # custom size
+      buttons:
+         - name: Resume
+           url: "/posts/resume"
+         - name: Github
+           url: "https://github.com/saketbyte"
+         - name: WordPress
+           url: "https://thoughtb.wordpress.com/"
+
+   socialIcons: # optional
+      - name: "Linkedin"
+        url: "https://www.linkedin.com/in/saketbyte/"
+      - name: "Instagram"
+        url: "https://www.instagram.com/samriddh._.singh/"
+      - name: "Twitter"
+        url: "https://x.com/saketbyte"
+
+menu:
+   main:
+      - identifier: categories
+        name: Categories
+        url: /categories/
+        weight: 20
+      - identifier: tags
+        name: Tags
+        url: /tags/
+        weight: 30
+      - identifier: archives
+        name: Archives
+        url: /archives/
+        weight: 40
+      - identifier: search
+        name: Search
+        url: /search/
+        weight: 50
+      - identifier: posts
+        name: Posts
+        url: /posts/
+        weight: 10
+
+outputs:
+   home:
+      - HTML
+      - RSS
+      - JSON # necessary for search
+publishDir: "public"
