@@ -6,8 +6,36 @@
     <description>Recent content in Categories on saketbyte</description>
     <generator>Hugo -- 0.147.8</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Jun 2025 18:19:42 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jun 2025 08:52:17 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>http://localhost:1313/categories/blog/</link>
+      <pubDate>Fri, 20 Jun 2025 08:52:17 +0530</pubDate>
+      <guid>http://localhost:1313/categories/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technical</title>
+      <link>http://localhost:1313/categories/technical/</link>
+      <pubDate>Fri, 20 Jun 2025 08:30:38 +0530</pubDate>
+      <guid>http://localhost:1313/categories/technical/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interview Prep</title>
+      <link>http://localhost:1313/categories/interview-prep/</link>
+      <pubDate>Thu, 19 Jun 2025 13:07:39 +0530</pubDate>
+      <guid>http://localhost:1313/categories/interview-prep/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JavaScript</title>
+      <link>http://localhost:1313/categories/javascript/</link>
+      <pubDate>Thu, 19 Jun 2025 13:07:39 +0530</pubDate>
+      <guid>http://localhost:1313/categories/javascript/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Portfolio</title>
       <link>http://localhost:1313/categories/portfolio/</link>

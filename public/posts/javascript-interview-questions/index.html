@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>JavaScript Interview Questions | saketbyte</title>
+<meta name="keywords" content="JavaScript, Interview, Coding, Frontend">
+<meta name="description" content="Frequently asked JavaScript interview questions with explanations and code examples.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/javascript-interview-questions/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e2798bd88395b9feeb2a4d73d504608d19dd39a782d06959c3fdddef0230dd44.css" integrity="sha256-4nmL2IOVuf7rKk1z1QRgjRndOaeC0GlZw/3d7wIw3UQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/javascript-interview-questions/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      JavaScript Interview Questions
+    </h1>
+    <div class="post-description">
+      Frequently asked JavaScript interview questions with explanations and code examples.
+    </div>
+    <div class="post-meta"><span title='2025-06-19 10:00:00 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;11 min
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="javascript-interview-questions">JavaScript Interview Questions<a hidden class="anchor" aria-hidden="true" href="#javascript-interview-questions">#</a></h1>
+<h2 id="1-playing-with-a-typical-api-response-and-basic-functions-in-js">1: Playing with a typical API response and basic functions in JS<a hidden class="anchor" aria-hidden="true" href="#1-playing-with-a-typical-api-response-and-basic-functions-in-js">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name1&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> ,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;20&#34;</span>},
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name2&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> ,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;40&#34;</span>},
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name3&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;40&#34;</span> }
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name4&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;30&#34;</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#39;name1&#39;, &#39;name2&#39;, &#39;name3&#39;]
+</span></span></span></code></pre></div><h4 id="interviewer-perspective">Interviewer Perspective<a hidden class="anchor" aria-hidden="true" href="#interviewer-perspective">#</a></h4>
+<p>The interview is looking forward to make you comfortable and testing the waters as to what levels can they go to.</p>
+<h3 id="extracting-names-from-above-object">Extracting Names from above object<a hidden class="anchor" aria-hidden="true" href="#extracting-names-from-above-object">#</a></h3>
+<ol>
+<li>Using a basic for loop</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">length</span>;<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">names</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">users</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Names: &#34;</span><span style="color:#a6e22e">names</span>);
+</span></span></code></pre></div><ol start="2">
+<li>Using forEach</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">user</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">names</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">names</span>);
+</span></span></code></pre></div><ol start="3">
+<li>Using map</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">user</span>) =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">names</span>);
+</span></span></code></pre></div><h2 id="let-us-check-some-other-interesting-functions">Let us check some other interesting functions:<a hidden class="anchor" aria-hidden="true" href="#let-us-check-some-other-interesting-functions">#</a></h2>
+<h3 id="filter-premium-users">Filter premium users<a hidden class="anchor" aria-hidden="true" href="#filter-premium-users">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">// Filter the names of the users who have availed premium service
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">user</span>) =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">premiumUser</span>).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">user</span>=&gt;<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span></code></pre></div><h3 id="sort-based-on-age">Sort based on age<a hidden class="anchor" aria-hidden="true" href="#sort-based-on-age">#</a></h3>
+<p>Any sorting will take a predicate function which gives a simple answer - what makes this larger/smaller/equal. Based on this boolean value, we can sort anything.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">//  Refer: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">compareFn</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">a</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">less</span> <span style="color:#a6e22e">than</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">some</span> <span style="color:#a6e22e">ordering</span> <span style="color:#a6e22e">criterion</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">a</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">greater</span> <span style="color:#a6e22e">than</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ordering</span> <span style="color:#a6e22e">criterion</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// a must be equal to b
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Solution (Remember sort will mutate the original array)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>) =&gt; <span style="color:#a6e22e">user1</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">user2</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span> );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="sort-based-on-age-filter-only-premium-users-extract-their-names">Sort based on age, filter only premium users, extract their names.<a hidden class="anchor" aria-hidden="true" href="#sort-based-on-age-filter-only-premium-users-extract-their-names">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">// we can chain these operations.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>) =&gt; <span style="color:#a6e22e">user1</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">user2</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">user</span>) =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">premiumUser</span>)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">user</span>=&gt;<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
+</span></span></code></pre></div><p>How would you sort objects based on some property? Eg - Sort books name with last name of author.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">books</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;book1&#34;</span>, <span style="color:#a6e22e">author</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;author A&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;book2&#34;</span>, <span style="color:#a6e22e">author</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;author D&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;book3&#34;</span>, <span style="color:#a6e22e">author</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;author C&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;book4&#34;</span>, <span style="color:#a6e22e">author</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;author B&#34;</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">books</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">book1</span>, <span style="color:#a6e22e">book2</span>)=&gt;{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastName1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastName2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">book2</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lastName1</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lastName2</span><span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">books</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Note that sort will always modify original array on which it is applied on.
+</span></span></span></code></pre></div><h3 id="anatomy-of-filter">Anatomy of Filter:<a hidden class="anchor" aria-hidden="true" href="#anatomy-of-filter">#</a></h3>
+<p>Taking directly from developer.mozilla.org docs:</p>
+<p>The array argument is useful if you want to access another element in the array, especially when you don&rsquo;t have an existing variable that refers to the array.</p>
+<p>The following example first uses map() to extract the numerical ID from each name and then uses filter() to select the ones that are greater than its neighbors.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JC63&#34;</span>, <span style="color:#e6db74">&#34;Bob132&#34;</span>, <span style="color:#e6db74">&#34;Ursula89&#34;</span>, <span style="color:#e6db74">&#34;Ben96&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greatIDs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">names</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">name</span>) =&gt; parseInt(<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">match</span>(<span style="color:#e6db74">/\d+/</span>)[<span style="color:#ae81ff">0</span>], <span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">arr</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Without the arr argument, there&#39;s no way to easily access the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// intermediate array without saving it to a variable.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greatIDs</span>); <span style="color:#75715e">// [132, 96]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// The array argument is not the array that is being built.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// There is no way to access the array being built from the callback function.
+</span></span></span></code></pre></div><h3 id="application-of-reduce-function">Application of reduce function:<a hidden class="anchor" aria-hidden="true" href="#application-of-reduce-function">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// here acc is like the sum variable in sum+= arr[i]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Think like - reduce this array, and accumulate the value in acc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Pick the current element as curr, and perform some
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// operation on curr and acc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Starting with an initial val of 0 here.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">acc</span>, <span style="color:#a6e22e">curr</span>) =&gt; <span style="color:#a6e22e">acc</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">curr</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>); <span style="color:#75715e">// 10
+</span></span></span></code></pre></div><h3 id="understanding-splice-function">Understanding Splice function:<a hidden class="anchor" aria-hidden="true" href="#understanding-splice-function">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">// Splice is used to modify the original array - insert, delete opertations.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Syntax:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// array.splice(starthere, deleteCount, item1, item2, ..., itemN)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// startHere - starts to modify consecutively from this element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// delete these many from startHere and insert the remaining after it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Remember it need not match delete count with N items,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the x number of elements are deleted and N-x are inserted.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#e6db74">&#39;z&#39;</span>); <span style="color:#75715e">// delete 2 and insert remaining
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">items</span>); <span style="color:#75715e">// [&#39;a&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;,&#39;d&#39;]
+</span></span></span></code></pre></div><h3 id="finding-all-users-which-satisfy-a-condition">Finding all users which satisfy a condition:<a hidden class="anchor" aria-hidden="true" href="#finding-all-users-which-satisfy-a-condition">#</a></h3>
+<p>We can use the some method in above requirement. The some() method is an iterative method. It calls a provided callbackFn function once for each element in an array, until the callbackFn returns a truthy value. If such an element is found, some() immediately returns true and stops iterating through the array.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isValExists</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">val</span>, <span style="color:#a6e22e">users</span>) =&gt; <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">some</span>((<span style="color:#a6e22e">user</span>) =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">val</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Or see the below example from Mozilla docs where we are trying to check
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// if the array is strictly increasing or not.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// filter takes only positive elements some uses num as current element,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// idx as index, and arr to access the array returned
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// by filter in the intermediate step.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isIncreasing</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">numbers</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">num</span>) =&gt; <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">some</span>((<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">arr</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Without the arr argument, there&#39;s no way to easily access the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// intermediate array without saving it to a variable.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">isIncreasing</span>); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h3 id="implement-a-range-function-which-takes-start-end-and-generates-an-array-with-those-values">Implement a range function which takes start, end and generates an array with those values<a hidden class="anchor" aria-hidden="true" href="#implement-a-range-function-which-takes-start-end-and-generates-an-array-with-those-values">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Javascript" data-lang="Javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Method one: Using for loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genRange</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>) =&gt;{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">end</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Method two: Using array.keys method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">genRange</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">start</span>,<span style="color:#a6e22e">end</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// spreading an array of size e-s+1 keys will give us the value easily,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but we need to map it from 0 to n-1 to a to b hence we use map.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> [...Array(<span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">keys</span>()].<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">item</span>) =&gt; <span style="color:#a6e22e">item</span><span style="color:#f92672">+</span><span style="color:#a6e22e">start</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// end - start - number of elements,
+</span></span></span></code></pre></div><h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Function Name</th>
+          <th>Basic Syntax</th>
+          <th>One-Line Use Case</th>
+          <th>Mutates Original Array</th>
+          <th>Returns a Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>forEach</code></td>
+          <td><code>arr.forEach((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.forEach(item =&gt; console.log(item))</code></td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><code>map</code></td>
+          <td><code>arr.map((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.map(item =&gt; item.name)</code></td>
+          <td>No</td>
+          <td>Yes (new array)</td>
+      </tr>
+      <tr>
+          <td><code>filter</code></td>
+          <td><code>arr.filter((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.filter(item =&gt; item.age &gt; 30)</code></td>
+          <td>No</td>
+          <td>Yes (new array)</td>
+      </tr>
+      <tr>
+          <td><code>reduce</code></td>
+          <td><code>arr.reduce((acc, curr, idx, arr) =&gt; { ... }, initVal)</code></td>
+          <td><code>arr.reduce((acc, curr) =&gt; acc + curr, 0)</code></td>
+          <td>No</td>
+          <td>Yes (single value)</td>
+      </tr>
+      <tr>
+          <td><code>sort</code></td>
+          <td><code>arr.sort((a, b) =&gt; { ... })</code></td>
+          <td><code>arr.sort((a, b) =&gt; a.age - b.age)</code></td>
+          <td>Yes</td>
+          <td>Yes (same array)</td>
+      </tr>
+      <tr>
+          <td><code>splice</code></td>
+          <td><code>arr.splice(start, deleteCount, ...items)</code></td>
+          <td><code>arr.splice(1, 2, 'x', 'y')</code></td>
+          <td>Yes</td>
+          <td>Yes (array of removed items)</td>
+      </tr>
+      <tr>
+          <td><code>slice</code></td>
+          <td><code>arr.slice(start, end)</code></td>
+          <td><code>arr.slice(1, 3)</code></td>
+          <td>No</td>
+          <td>Yes (new array)</td>
+      </tr>
+      <tr>
+          <td><code>some</code></td>
+          <td><code>arr.some((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.some(item =&gt; item.active)</code></td>
+          <td>No</td>
+          <td>Yes (boolean)</td>
+      </tr>
+      <tr>
+          <td><code>every</code></td>
+          <td><code>arr.every((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.every(item =&gt; item.active)</code></td>
+          <td>No</td>
+          <td>Yes (boolean)</td>
+      </tr>
+      <tr>
+          <td><code>find</code></td>
+          <td><code>arr.find((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.find(item =&gt; item.id === 2)</code></td>
+          <td>No</td>
+          <td>Yes (first matched item or undefined)</td>
+      </tr>
+      <tr>
+          <td><code>findIndex</code></td>
+          <td><code>arr.findIndex((item, idx, arr) =&gt; { ... })</code></td>
+          <td><code>arr.findIndex(item =&gt; item.id === 2)</code></td>
+          <td>No</td>
+          <td>Yes (index or -1)</td>
+      </tr>
+      <tr>
+          <td><code>flat</code></td>
+          <td><code>arr.flat(depth)</code></td>
+          <td><code>[1, [2, [3]]].flat(2)</code></td>
+          <td>No</td>
+          <td>Yes (new flattened array)</td>
+      </tr>
+      <tr>
+          <td><code>concat</code></td>
+          <td><code>arr1.concat(arr2)</code></td>
+          <td><code>arr1.concat(arr2)</code></td>
+          <td>No</td>
+          <td>Yes (new array)</td>
+      </tr>
+      <tr>
+          <td><code>includes</code></td>
+          <td><code>arr.includes(value)</code></td>
+          <td><code>arr.includes(5)</code></td>
+          <td>No</td>
+          <td>Yes (boolean)</td>
+      </tr>
+      <tr>
+          <td><code>indexOf</code></td>
+          <td><code>arr.indexOf(value)</code></td>
+          <td><code>arr.indexOf('a')</code></td>
+          <td>No</td>
+          <td>Yes (index or -1)</td>
+      </tr>
+      <tr>
+          <td><code>join</code></td>
+          <td><code>arr.join(separator)</code></td>
+          <td><code>arr.join(', ')</code></td>
+          <td>No</td>
+          <td>Yes (string)</td>
+      </tr>
+      <tr>
+          <td><code>reverse</code></td>
+          <td><code>arr.reverse()</code></td>
+          <td><code>arr.reverse()</code></td>
+          <td>Yes</td>
+          <td>Yes (same array)</td>
+      </tr>
+      <tr>
+          <td><code>push</code></td>
+          <td><code>arr.push(item)</code></td>
+          <td><code>arr.push('new')</code></td>
+          <td>Yes</td>
+          <td>Yes (new length)</td>
+      </tr>
+      <tr>
+          <td><code>fill</code></td>
+          <td><code>arr.fill(value, start, end)</code></td>
+          <td><code>arr.fill(0, 1, 3)</code></td>
+          <td>Yes</td>
+          <td>Yes (same array)</td>
+      </tr>
+      <tr>
+          <td><code>Array.from</code></td>
+          <td><code>Array.from(arrayLike, mapFn?)</code></td>
+          <td><code>Array.from('123', Number)</code></td>
+          <td>No</td>
+          <td>Yes (new array)</td>
+      </tr>
+      <tr>
+          <td><code>Array.isArray</code></td>
+          <td><code>Array.isArray(value)</code></td>
+          <td><code>Array.isArray([1, 2])</code></td>
+          <td>No</td>
+          <td>Yes (boolean)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-null-vs-undefined">2: null vs undefined<a hidden class="anchor" aria-hidden="true" href="#2-null-vs-undefined">#</a></h2>
+<h3 id="interviewer-perspective-1">Interviewer Perspective<a hidden class="anchor" aria-hidden="true" href="#interviewer-perspective-1">#</a></h3>
+<p>How well do you understand type system and usage clarity while handling API responses or default values while error handling.</p>
+<h3 id="answer">Answer<a hidden class="anchor" aria-hidden="true" href="#answer">#</a></h3>
+<h4 id="undefined">Undefined<a hidden class="anchor" aria-hidden="true" href="#undefined">#</a></h4>
+<p>This is a primitive value, with type as undefined. The variable is declared but not assigned yet. It is set by JS engine automatically.</p>
+<h4 id="null">null<a hidden class="anchor" aria-hidden="true" href="#null">#</a></h4>
+<p>This is a null value but weirdly it has a type of Object in JS. It is explicitly set to variables manually. Also a falsy value by nature.</p>
+<p>Please note (lose equality) <code>JS console.log(null == undefined)</code> will return true as both are false values. In essence undefined is a parallel to notion of missing, while null is to empty.
+In the temporal dead zone, the value of any variable is undefined. ie, declared but not assigned any value but tried to log - it will show undefined.</p>
+<h2 id="3-write-a-function-multiplyab-which-returns-product-of-a-and-b">3: Write a function multiply(a)(b) which returns product of a and b<a hidden class="anchor" aria-hidden="true" href="#3-write-a-function-multiplyab-which-returns-product-of-a-and-b">#</a></h2>
+<h3 id="interviewer-perspective-2">Interviewer Perspective<a hidden class="anchor" aria-hidden="true" href="#interviewer-perspective-2">#</a></h3>
+<p>The interviewer wishes to check your grasp on concept of currying and it&rsquo;s BTS.</p>
+<h3 id="correct-answer">Correct Answer<a hidden class="anchor" aria-hidden="true" href="#correct-answer">#</a></h3>
+<p>Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of nested functions, each taking a single argument at a time.</p>
+<p>Let me write the code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">multiply</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>) =&gt;{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">b</span>) =&gt;{ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">*</span><span style="color:#a6e22e">b</span>};
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// OR
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">multiply</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> =&gt; <span style="color:#a6e22e">b</span> =&gt; <span style="color:#a6e22e">a</span><span style="color:#f92672">*</span><span style="color:#a6e22e">b</span>;
+</span></span></code></pre></div><p>But what is going on here?
+We return functions as the result of a function, and to which we pass further parameter values. This can be expanded recursively as well.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currySum</span>(<span style="color:#a6e22e">expectedArgsCount</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">curried</span>(...<span style="color:#a6e22e">newArgs</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">push</span>(...<span style="color:#a6e22e">newArgs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If we have enough arguments, compute the sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">expectedArgsCount</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">expectedArgsCount</span>).<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Otherwise, return the curried function again
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">curried</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">curried</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">currySum</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>)(<span style="color:#ae81ff">2</span>)(<span style="color:#ae81ff">3</span>));      <span style="color:#75715e">// 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)(<span style="color:#ae81ff">3</span>));      <span style="color:#75715e">// 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>)(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>));      <span style="color:#75715e">// 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>));      <span style="color:#75715e">// 6
+</span></span></span></code></pre></div><h3 id="need">Need?<a hidden class="anchor" aria-hidden="true" href="#need">#</a></h3>
+<p>It can be used in setInputValue or to apply a function on another function, basically Higher Order functions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hasRole</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">role</span> =&gt; <span style="color:#a6e22e">user</span> =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">roles</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">role</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Alice&#39;</span>, <span style="color:#a6e22e">roles</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;user&#39;</span>] },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bob&#39;</span>, <span style="color:#a6e22e">roles</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;user&#39;</span>] }
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">admins</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">hasRole</span>(<span style="color:#e6db74">&#39;admin&#39;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Alice
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Example 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getThisPropertyObject</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">curry</span>((<span style="color:#a6e22e">prop</span>, <span style="color:#a6e22e">obj</span>) =&gt; <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">prop</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getAge</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;age&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">customFilter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">curry</span>((<span style="color:#a6e22e">fn</span>,<span style="color:#a6e22e">val</span>) =&gt; <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">fn</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">customFilter</span>(<span style="color:#a6e22e">getAge</span>, [{<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>}])
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2
+</span></span></span></code></pre></div><hr>
+<h2 id="4-shuffle-an-array-of-objects">4: Shuffle an Array of Objects<a hidden class="anchor" aria-hidden="true" href="#4-shuffle-an-array-of-objects">#</a></h2>
+<h3 id="interviewer-perspective-3">Interviewer Perspective<a hidden class="anchor" aria-hidden="true" href="#interviewer-perspective-3">#</a></h3>
+<p>They probably want to check language and slight algorithmic profficiency.</p>
+<h3 id="correct-answer-1">Correct Answer<a hidden class="anchor" aria-hidden="true" href="#correct-answer-1">#</a></h3>
+<p>The approach I am using here is to attach one random value to the object in an array, and then sort based on this random value.</p>
+<h3 id="code-example">Code Example<a hidden class="anchor" aria-hidden="true" href="#code-example">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shuffler</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">input</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span>) =&gt; ({<span style="color:#a6e22e">randomVal</span><span style="color:#f92672">:</span>Math.<span style="color:#a6e22e">random</span>(), <span style="color:#a6e22e">inputVal</span><span style="color:#f92672">:</span><span style="color:#a6e22e">item</span>})
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">sort</span>(<span style="color:#a6e22e">item1</span>,<span style="color:#a6e22e">item2</span>)=&gt; (<span style="color:#a6e22e">item1</span>.<span style="color:#a6e22e">randomVal</span><span style="color:#f92672">-</span><span style="color:#a6e22e">item2</span>.<span style="color:#a6e22e">randomVal</span>)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">i</span>) =&gt; <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">inputVal</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// map and attach randomVal property
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// sort based on the random value distribution
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// map and remove that random val again.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><hr>
+<h2 id="5-behavior-of-this-keyword">5: Behavior of <code>this</code> keyword<a hidden class="anchor" aria-hidden="true" href="#5-behavior-of-this-keyword">#</a></h2>
+<p>There can be 3 places where <code>this</code> is used.</p>
+<ol>
+<li>Inside a function</li>
+<li>Inside an Object</li>
+<li>Inside a Class</li>
+<li>Inside a nested function in a class</li>
+</ol>
+<h3 id="1-inside-a-function">1. Inside a function<a hidden class="anchor" aria-hidden="true" href="#1-inside-a-function">#</a></h3>
+<p>When we use this inside a Standalone function, in strict mode this would be undefined but in non-strict mode this will refer to the global/window object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">useOfThis</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">useOfThis</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// window
+</span></span></span></code></pre></div><h3 id="2-inside-an-object">2. Inside an Object<a hidden class="anchor" aria-hidden="true" href="#2-inside-an-object">#</a></h3>
+<p>Let us define an object with some properties and a function which uses <code>this</code> to refer to one of these properties.
+In this case, the <code>this</code> keyword will always refer to the object which calls it. Here chocolateCake.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chocolateCake</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ingredients</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;semolina&#34;</span>, <span style="color:#e6db74">&#34;baking powder&#34;</span>, <span style="color:#e6db74">&#34;cocoa&#34;</span>, <span style="color:#e6db74">&#34;powdered sugar&#34;</span>, <span style="color:#e6db74">&#34;chocolate syrup&#34;</span>, <span style="color:#e6db74">&#34;dry fruits&#34;</span>],
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">steps</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bake something like you would bake a cake. :)&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">cook</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// do something
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Cake is baked using&#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ingredients</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">chocolateCake</span>.<span style="color:#a6e22e">cook</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output - Cake is baked using [&#34;semolina&#34;, &#34;baking powder&#34; .....]
+</span></span></span></code></pre></div><p><strong>NOT SO SIMPLE</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cookLater</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">chocolateCake</span>.<span style="color:#a6e22e">cook</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cookLater</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// this is global or undefined in this case. :)
+</span></span></span></code></pre></div><h3 id="3-inside-a-class-method">3. Inside a Class Method:<a hidden class="anchor" aria-hidden="true" href="#3-inside-a-class-method">#</a></h3>
+<p>This is simple, the <code>this</code> keyword will associate itself with the closest object with which it is called.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cake</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">flavor</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">flavor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">flavor</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bake</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Oven started... and the smell of&#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">flavor</span>, <span style="color:#e6db74">&#34;cake is coming to you!&#34;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ananas</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Cake</span>(<span style="color:#e6db74">&#34;ananas&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ananas</span>.<span style="color:#a6e22e">bake</span>();
+</span></span></code></pre></div><hr>
+<h3 id="4-a-function-nested-inside-a-class-method-tricky-one">4. A function nested inside a Class Method (Tricky one)<a hidden class="anchor" aria-hidden="true" href="#4-a-function-nested-inside-a-class-method-tricky-one">#</a></h3>
+<p>In case we have a function nested inside a class function, and we try to call the class function with help of an object, the <code>this</code> keyword will go crazy. It starts to behave like a normal function and so it outputs undefined in strict mode or global object in non-strict mode.
+Bear with me I will explain the fix as well.</p>
+<p><strong>Reason:</strong> First let us understand why? The reason <code>this</code> inside a nested function doesn’t refer to the class instance is because <code>this</code> is dynamically bound based on how a function is called, not where it is written unless it’s an arrow function which borrows the scope of it&rsquo;s just outer lexical scope for <code>this</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cake</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cakeSize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bake</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeVegan</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;The vegan cake size is &#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cakeSize</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">makeVegan</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">veganCake</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Cake</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">veganCake</span>.<span style="color:#a6e22e">bake</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Output - The vegan cake size is undefined
+</span></span></span></code></pre></div><h3 id="how-to-solve">How to solve?<a hidden class="anchor" aria-hidden="true" href="#how-to-solve">#</a></h3>
+<p>There are three possible methods to resolve it: a. using arrow function or b. defining this_ as <code>this</code> just outside the <code>function</code> c. use .bind()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//a. Using arrow function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">bake</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">makeVegan</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;The vegan cake size is &#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cakeSize</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">makeVegan</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//b. Using this_
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bake</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">this_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeVegan</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;The vegan cake size is &#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cakeSize</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">makeVegan</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//c. Using .bind()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bake</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">makeVegan</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;The vegan cake size is &#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cakeSize</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">makeVegan</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>)();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="let-us-recap">Let us recap:<a hidden class="anchor" aria-hidden="true" href="#let-us-recap">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Context</th>
+          <th><code>this</code> refers to</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Function</td>
+          <td><code>window</code> or <code>global</code> / undefined if strict</td>
+      </tr>
+      <tr>
+          <td>Object method</td>
+          <td>The object itself</td>
+      </tr>
+      <tr>
+          <td>Class method</td>
+          <td>The class instance</td>
+      </tr>
+      <tr>
+          <td>Function inside class method</td>
+          <td>Global or <code>undefined</code> (NOT class instance)</td>
+      </tr>
+      <tr>
+          <td>Arrow function</td>
+          <td><strong>Lexically inherited</strong> from parent scope</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
+      <li><a href="http://localhost:1313/tags/interview/">Interview</a></li>
+      <li><a href="http://localhost:1313/tags/coding/">Coding</a></li>
+      <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/hoisting-and-scopes/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Hoisting and Scopes</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/resume/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Resume</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">saketbyte</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

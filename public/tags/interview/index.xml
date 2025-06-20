@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Interview on saketbyte</title>
+    <link>http://localhost:1313/tags/interview/</link>
+    <description>Recent content in Interview on saketbyte</description>
+    <generator>Hugo -- 0.147.8</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jun 2025 08:30:38 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/interview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debounce and Throttle</title>
+      <link>http://localhost:1313/posts/debounce-and-throttle/</link>
+      <pubDate>Fri, 20 Jun 2025 08:30:38 +0530</pubDate>
+      <guid>http://localhost:1313/posts/debounce-and-throttle/</guid>
+      <description>Understanding Debounce and Throttle function</description>
+    </item>
+    <item>
+      <title>Hoisting and Scopes</title>
+      <link>http://localhost:1313/posts/hoisting-and-scopes/</link>
+      <pubDate>Thu, 19 Jun 2025 13:07:39 +0530</pubDate>
+      <guid>http://localhost:1313/posts/hoisting-and-scopes/</guid>
+      <description>Clearing the confusion around Hoisting, scopes, var let const etc.</description>
+    </item>
+    <item>
+      <title>JavaScript Interview Questions</title>
+      <link>http://localhost:1313/posts/javascript-interview-questions/</link>
+      <pubDate>Thu, 19 Jun 2025 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/javascript-interview-questions/</guid>
+      <description>Frequently asked JavaScript interview questions with explanations and code examples.</description>
+    </item>
+  </channel>
+</rss>

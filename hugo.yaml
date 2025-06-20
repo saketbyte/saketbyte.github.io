@@ -4,6 +4,9 @@ title: saketbyte
 theme: PaperMod
 
 params:
+   authors: ["Samriddh Singh"]
+   ShowPostNavLinks: true
+   ShowCodeCopyButtons: true
    ShowReadingTime: true
    ShowBreadCrumbs: true
    profileMode:

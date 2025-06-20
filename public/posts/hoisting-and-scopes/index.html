@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Hoisting and Scopes | saketbyte</title>
+<meta name="keywords" content="JavaScript, Interview, Coding, Frontend">
+<meta name="description" content="Clearing the confusion around Hoisting, scopes, var let const etc.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/hoisting-and-scopes/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e2798bd88395b9feeb2a4d73d504608d19dd39a782d06959c3fdddef0230dd44.css" integrity="sha256-4nmL2IOVuf7rKk1z1QRgjRndOaeC0GlZw/3d7wIw3UQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/hoisting-and-scopes/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Hoisting and Scopes
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-description">
+      Clearing the confusion around Hoisting, scopes, var let const etc.
+    </div>
+    <div class="post-meta"><span title='2025-06-19 13:07:39 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;7 min
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="technical-blog-title">Technical Blog Title<a hidden class="anchor" aria-hidden="true" href="#technical-blog-title">#</a></h1>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+<ol>
+<li><a href="#hositing">Hoisting</a></li>
+<li><a href="#hoisting-behavior-of-variables">Hoisting Behavior</a></li>
+<li><a href="#temporal-dead-zone">Temporal Dead Zone</a></li>
+<li><a href="#guess-the-output">Guess the output?</a></li>
+<li><a href="#key-takeaways">Key Takeaway</a></li>
+</ol>
+<hr>
+<h1 id="hoisting">Hoisting<a hidden class="anchor" aria-hidden="true" href="#hoisting">#</a></h1>
+<p>In JavaScript, <strong>hoisting</strong> refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between <code>var</code>, <code>let</code>, and <code>const</code>.</p>
+<hr>
+<h2 id="hoisting-behavior-of-variables">Hoisting Behavior of variables<a hidden class="anchor" aria-hidden="true" href="#hoisting-behavior-of-variables">#</a></h2>
+<h3 id="var-variables"><code>var</code> Variables<a hidden class="anchor" aria-hidden="true" href="#var-variables">#</a></h3>
+<p>Variables declared using <code>var</code> are <strong>hoisted and initialized with <code>undefined</code></strong>. This means that even if you try to access the variable before its declaration, the code won&rsquo;t throw an error; instead, you&rsquo;ll get <code>undefined</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><h3 id="let-and-const-variables"><code>let</code> and <code>const</code> Variables<a hidden class="anchor" aria-hidden="true" href="#let-and-const-variables">#</a></h3>
+<p>Unlike <code>var</code>, variables declared with <code>let</code> and <code>const</code> are also hoisted, <strong>but they are not initialized during hoisting</strong>. Attempting to access them before their actual declaration will result in a <code>ReferenceError</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// ReferenceError: Cannot access &#39;x&#39; before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><p>This behavior is due to the <strong>Temporal Dead Zone (TDZ)</strong>, a concept introduced in ES6 to make JavaScript behavior more predictable and reduce the likelihood of bugs.</p>
+<hr>
+<h2 id="scope-related-behavior-of-variables">Scope Related Behavior of variables<a hidden class="anchor" aria-hidden="true" href="#scope-related-behavior-of-variables">#</a></h2>
+<p>Scope is not just about accessibility of a variable, but we also need to check lifetime, environment and bindings of the given variable in JS.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Narrowest Scope it can exhibit</th>
+          <th>Meaning</th>
+          <th>Reassignment</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>var</strong></td>
+          <td>function</td>
+          <td>available through out the function even if declared within a block ({ }) inside it.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>let</strong></td>
+          <td>block</td>
+          <td>Not available beyond the block ({ }) in which it is defined.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>const</strong></td>
+          <td>block</td>
+          <td>Not available beyond the block ({ }) in which it is defined.</td>
+          <td>Mutable but cannot be reassigned.</td>
+      </tr>
+  </tbody>
+</table>
+<p>If we declare them in the global scope, let and const (and class) will also create global declarations that is why I have mentioned narrowest scope it can exhibit. Where this gets confusing is, unlike var and function, when let, const, and class are used in the global scope, they do not create global properties, whereas var and function do.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#75715e">// global
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#75715e">// also global as it can not exhibit the narrow scope of blocks, only of functions.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Remember above and the hoisting concept for the fun question in the end.</p>
+<h2 id="temporal-dead-zone">Temporal Dead Zone<a hidden class="anchor" aria-hidden="true" href="#temporal-dead-zone">#</a></h2>
+<p>The <strong>Temporal Dead Zone</strong> is a period between the start of a block scope and the point where the variable is declared and initialized. During this period, any reference to the variable will throw a <code>ReferenceError</code>.</p>
+<h3 id="key-characteristics-of-tdz">Key Characteristics of TDZ:<a hidden class="anchor" aria-hidden="true" href="#key-characteristics-of-tdz">#</a></h3>
+<ol>
+<li><strong>Declaration Phase</strong>: When <code>let</code> or <code>const</code> is encountered, the variable is hoisted but left uninitialized.</li>
+<li><strong>Initialization Phase</strong>: The variable gets initialized only when execution reaches the line of declaration.</li>
+<li><strong>Accessing During TDZ</strong>: Accessing the variable before initialization results in a <code>ReferenceError</code>.</li>
+</ol>
+<h4 id="example">Example:<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// ReferenceError
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><p>In this example, <code>x</code> is hoisted, but not initialized. Trying to log it before the <code>let</code> declaration triggers a <code>ReferenceError</code> because it’s still in the TDZ.</p>
+<hr>
+<h3 id="coding-standards">Coding standards<a hidden class="anchor" aria-hidden="true" href="#coding-standards">#</a></h3>
+<p>To avoid running into errors caused by the Temporal Dead Zone:</p>
+<ul>
+<li>Always declare your variables at the <strong>top of their scope</strong> before using them.</li>
+<li>Prefer using <code>let</code> and <code>const</code> over <code>var</code> for clearer and more predictable code.</li>
+</ul>
+<h4 id="improved-example">Improved Example:<a hidden class="anchor" aria-hidden="true" href="#improved-example">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span>; <span style="color:#75715e">// Declare x at the beginning of the scope
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// undefined (no error)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// Initialize x
+</span></span></span></code></pre></div><p>In this case, although <code>x</code> is not yet assigned a value at the time of logging, it’s declared properly and no error occurs because it’s not being accessed before the declaration line.</p>
+<hr>
+<h2 id="fun-question">Fun Question:<a hidden class="anchor" aria-hidden="true" href="#fun-question">#</a></h2>
+<p>Guess the outputs of the following:</p>
+<p><strong>Code A</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Code B</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="answer">Answer<a hidden class="anchor" aria-hidden="true" href="#answer">#</a></h3>
+<p>Remember that var is function scoped, so the same i is shared across all iterations. By the time setTimeout runs, the loop has completed, and i is 3. While let is block scoped, so a new i is created per iteration. Each closure in setTimeout captures the correct value of i at that time.</p>
+<p>Wait let me provide some more background information for this:</p>
+<h3 id="closure">Closure<a hidden class="anchor" aria-hidden="true" href="#closure">#</a></h3>
+<p>A closure is a function that “remembers” the variables from where it was defined, even after that outer scope has finished execution. It is like remembering the taste of chocolate even if it has finished. XD
+Remember that each function will have an enviornment record in the call stack.</p>
+<p>Take a look at this code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">chocoPie</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">whiteChocolate</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">melted</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">taste</span> <span style="color:#f92672">=</span> <span style="color:#f92672">++</span><span style="color:#a6e22e">whiteChocolate</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">taste</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">melted</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">afterTaste</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">chocoPie</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// we are storing a reference to the melted function, even when the outer function has completed it&#39;s execution.
+</span></span></span></code></pre></div><p>Above, the execution environment of chocoPie (outer function) is retained as a reference to the melted(inner) function even though the call of chocoPie is done. So we have access to the value of whiteChocolate even after the outer function has completed it&rsquo;s execution. This is called Closure, a combination of function objects which retains the environment in function call stack. Happens in nested functions always.</p>
+<p>Now here, the difference between var and let is not that clear, because whiteChocolate is function scoped for both. Both var and let will pass through this funnel of scope.</p>
+<h3 id="back-to-fun-question">Back to fun question:<a hidden class="anchor" aria-hidden="true" href="#back-to-fun-question">#</a></h3>
+<p><strong>Note:</strong> In code A and code B examples, <code>let</code> is in it&rsquo;s narrowest scope ie <code>block</code>, while <code>var</code> behaves in it&rsquo;s <code>function</code> scope. Hence the difference arises.</p>
+<ul>
+<li>
+<p><strong>Execution Context :</strong> Every time a function runs, a new execution context is created and pushed to the call stack. The execution context includes a Lexical Environment that holds variable bindings.</p>
+</li>
+<li>
+<p><strong>Lexical Environment :</strong> A Lexical Environment is a structure that holds identifiers (variables/functions) and references to outer environments (called the outer environment reference). Think of it like a scope + closure reference.</p>
+</li>
+<li>
+<p>**Behind the Scences :**The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.</p>
+</li>
+</ul>
+<h4 id="var">var<a hidden class="anchor" aria-hidden="true" href="#var">#</a></h4>
+<p><em>Now var i is hoisted and declared in the global execution context (or function context if inside a function). There is only one i shared by all iterations. Each time setTimeout() is called, a callback function is created, but it closes over the same environment, i.e., the same i. So when the callbacks run, the loop has already completed, and i is now 5. All callbacks log 5, because they all reference the same i from the shared environment.</em></p>
+<h4 id="let">let<a hidden class="anchor" aria-hidden="true" href="#let">#</a></h4>
+<p><em>Unlike var, let is block-scoped. The JavaScript engine treats this for loop as creating a new block-scoped environment for each iteration. For every iteration, a new Lexical Environment is created with a fresh i, unique to that loop iteration. The arrow function passed to setTimeout() closes over that unique environment. So when the callbacks run: Each closure has its own i, so they log 0, 1, 2, 3, 4.</em></p>
+<hr>
+<h2 id="homework-question">Homework question:<a hidden class="anchor" aria-hidden="true" href="#homework-question">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">increase</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">step</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) =&gt; { <span style="color:#a6e22e">count</span><span style="color:#f92672">+=</span><span style="color:#a6e22e">step</span>;},
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getValue</span><span style="color:#f92672">:</span> () =&gt; { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">count</span>;};
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Think about how closures are working in above.
+</span></span></span></code></pre></div><hr>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<ul>
+<li><code>var</code> is hoisted and initialized to <code>undefined</code>. So you can refer to a <code>var</code> variable and it will output undefined.</li>
+<li><code>let</code> and <code>const</code> are hoisted but not initialized, leading to a TDZ. So you can refer but it will throw ReferenceError.</li>
+<li>YES, <code>var, let</code> and <code>const</code> all are hoisted but var is not moved to Temporal Dead Zone.</li>
+<li>Accessing <code>let</code> or <code>const</code> variables before their declaration throws a <code>ReferenceError</code>.</li>
+<li>TDZ helps enforce cleaner coding by encouraging early declarations and preventing undefined access.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
+      <li><a href="http://localhost:1313/tags/interview/">Interview</a></li>
+      <li><a href="http://localhost:1313/tags/coding/">Coding</a></li>
+      <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/debounce-and-throttle/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Debounce and Throttle</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/javascript-interview-questions/">
+    <span class="title">Next »</span>
+    <br>
+    <span>JavaScript Interview Questions</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">saketbyte</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
