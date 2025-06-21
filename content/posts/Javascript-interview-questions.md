@@ -733,7 +733,7 @@ const  fetchInParallelAsync = async () => {
 
 1. `fetchInParallelAsync` function enters our call stack, and waits for it's execution by the JS Engine.
 2. On it's right time, 2 non-blocking API calls are sent to the WebAPI of browser, which processes the network requests in it's own environment without disturbing our JS Thread.
-3. Our thread is free and it can take up the next task as scheduled in the Micro task or macro task queue or if both are empty, it can check in the call stack.
+3. Our thread is free and it can take up the next task as scheduled in the call stack, if the stack is empty only then it goes to Micro task or later macro task queue or if both are empty, it can check in the call stack again.
 4. Web API is continously checking if the result of both calls is ready or not. Once it is ready, the Promises are added to the Micro Task queue for execution.
 5. JS Engine picks them up, creates a new Promise for promise.All() and sends back the result to us as response of both the apis.
 
