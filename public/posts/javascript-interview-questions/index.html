@@ -137,18 +137,17 @@
     <div class="post-description">
       Frequently asked JavaScript interview questions with explanations and code examples.
     </div>
-    <div class="post-meta"><span title='2025-06-19 10:00:00 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;11 min
+    <div class="post-meta"><span title='2025-06-19 10:00:00 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;18 min
 
 </div>
   </header> 
   <div class="post-content"><h1 id="javascript-interview-questions">JavaScript Interview Questions<a hidden class="anchor" aria-hidden="true" href="#javascript-interview-questions">#</a></h1>
 <h2 id="1-playing-with-a-typical-api-response-and-basic-functions-in-js">1: Playing with a typical API response and basic functions in JS<a hidden class="anchor" aria-hidden="true" href="#1-playing-with-a-typical-api-response-and-basic-functions-in-js">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name1&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> ,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;20&#34;</span>},
-</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name2&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> ,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;40&#34;</span>},
-</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name3&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;40&#34;</span> }
-</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name4&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,<span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;30&#34;</span> }
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name1&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;20&#34;</span> },
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name2&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;40&#34;</span> },
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name3&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;40&#34;</span> },
+</span></span><span style="display:flex;"><span>	{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;name4&#34;</span>, <span style="color:#a6e22e">premiumUser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;30&#34;</span> }
 </span></span><span style="display:flex;"><span>];
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Result
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [&#39;name1&#39;, &#39;name2&#39;, &#39;name3&#39;]
@@ -180,10 +179,23 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">names</span>);
 </span></span></code></pre></div><h2 id="let-us-check-some-other-interesting-functions">Let us check some other interesting functions:<a hidden class="anchor" aria-hidden="true" href="#let-us-check-some-other-interesting-functions">#</a></h2>
 <h3 id="filter-premium-users">Filter premium users<a hidden class="anchor" aria-hidden="true" href="#filter-premium-users">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">// Filter the names of the users who have availed premium service
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// forEach
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">curr</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">curr</span>.<span style="color:#a6e22e">premiumUser</span>) <span style="color:#a6e22e">names</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">curr</span>.<span style="color:#a6e22e">name</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">names</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Filter the names of the users who have availed premium service
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">user</span>) =&gt; <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">premiumUser</span>).<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">user</span>=&gt;<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
-</span></span></code></pre></div><h3 id="sort-based-on-age">Sort based on age<a hidden class="anchor" aria-hidden="true" href="#sort-based-on-age">#</a></h3>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Notice that in arrow functions it is not mandatory to write return keyword when eliding {}.
+</span></span></span></code></pre></div><h3 id="sort-based-on-age">Sort based on age<a hidden class="anchor" aria-hidden="true" href="#sort-based-on-age">#</a></h3>
 <p>Any sorting will take a predicate function which gives a simple answer - what makes this larger/smaller/equal. Based on this boolean value, we can sort anything.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">//  Refer: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -196,7 +208,22 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// a must be equal to b
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Solution (Remember sort will mutate the original array)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// normal function in JS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">compareAge</span>(<span style="color:#a6e22e">u1</span>, <span style="color:#a6e22e">u2</span>){
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">u1</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">u2</span>.<span style="color:#a6e22e">age</span>) <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">u1</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">u2</span>.<span style="color:#a6e22e">age</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// arrow function format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">compareAge</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">u1</span>,<span style="color:#a6e22e">u2</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">u1</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">u2</span>.<span style="color:#a6e22e">age</span>) <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">u1</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">u2</span>.<span style="color:#a6e22e">age</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Solution with callback as arrow function (Remember sort will mutate the original array)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>) =&gt; <span style="color:#a6e22e">user1</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">user2</span>.<span style="color:#a6e22e">age</span><span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span> );
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="sort-based-on-age-filter-only-premium-users-extract-their-names">Sort based on age, filter only premium users, extract their names.<a hidden class="anchor" aria-hidden="true" href="#sort-based-on-age-filter-only-premium-users-extract-their-names">#</a></h3>
@@ -217,7 +244,8 @@
 </span></span><span style="display:flex;"><span>]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">books</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">book1</span>, <span style="color:#a6e22e">book2</span>)=&gt;{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastName1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// grab last name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastName1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">1</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lastName2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">book2</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">1</span>];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">lastName1</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">lastName2</span><span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>})
@@ -230,13 +258,16 @@
 <p>The array argument is useful if you want to access another element in the array, especially when you don&rsquo;t have an existing variable that refers to the array.</p>
 <p>The following example first uses map() to extract the numerical ID from each name and then uses filter() to select the ones that are greater than its neighbors.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">names</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JC63&#34;</span>, <span style="color:#e6db74">&#34;Bob132&#34;</span>, <span style="color:#e6db74">&#34;Ursula89&#34;</span>, <span style="color:#e6db74">&#34;Ben96&#34;</span>];
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greatIDs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">names</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Using regex to match and extract digits.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greatIDs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">names</span>
 </span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">name</span>) =&gt; parseInt(<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">match</span>(<span style="color:#e6db74">/\d+/</span>)[<span style="color:#ae81ff">0</span>], <span style="color:#ae81ff">10</span>))
 </span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">arr</span>) =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Without the arr argument, there&#39;s no way to easily access the
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// intermediate array without saving it to a variable.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// intermediate array generated by map function without saving it to a variable.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// id is the curr element,  idx is the index of that element in arr
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// comparing on the go in the arr we are building
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">idx</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">idx</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>  });
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greatIDs</span>); <span style="color:#75715e">// [132, 96]
@@ -245,13 +276,18 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// There is no way to access the array being built from the callback function.
 </span></span></span></code></pre></div><h3 id="application-of-reduce-function">Application of reduce function:<a hidden class="anchor" aria-hidden="true" href="#application-of-reduce-function">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Basic syntax:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// reduce(callback)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// reduce(callback(storeInMe, currElement), start value)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">acc</span>, <span style="color:#a6e22e">curr</span>) =&gt; <span style="color:#a6e22e">acc</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">curr</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// here acc is like the sum variable in sum+= arr[i]
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Think like - reduce this array, and accumulate the value in acc.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Pick the current element as curr, and perform some
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// operation on curr and acc.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Starting with an initial val of 0 here.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">acc</span>, <span style="color:#a6e22e">curr</span>) =&gt; <span style="color:#a6e22e">acc</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">curr</span>, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>); <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>); <span style="color:#75715e">// 10
 </span></span></span></code></pre></div><h3 id="understanding-splice-function">Understanding Splice function:<a hidden class="anchor" aria-hidden="true" href="#understanding-splice-function">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#75715e">// Splice is used to modify the original array - insert, delete opertations.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Syntax:
@@ -302,7 +338,16 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// but we need to map it from 0 to n-1 to a to b hence we use map.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> [...Array(<span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">keys</span>()].<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">item</span>) =&gt; <span style="color:#a6e22e">item</span><span style="color:#f92672">+</span><span style="color:#a6e22e">start</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// end - start - number of elements,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// end - start +1 - number of elements inclusive of s and e,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// .keys() generates an iterator, and ... unrolls it to 0,1,2,3 etc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// .values() will give us undefined as values are not given to any element.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// .map() will map it in the right range.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// If we do not need to map, we could directly do -
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Make an array of keys as values, and then unrolling those values into a new array.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [...[...Array(end-start+1).keys()].values()]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Iterable deep dive about iterators, Array is inherently also an Object in JS:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
 </span></span></span></code></pre></div><h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
 <table>
   <thead>
@@ -587,6 +632,10 @@ In this case, the <code>this</code> keyword will always refer to the object whic
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cookLater</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">chocolateCake</span>.<span style="color:#a6e22e">cook</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">cookLater</span>();
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// this is global or undefined in this case. :)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// we have detached the method from its object and storing it as a plain function.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Now cookLater() is called without any object context, so this becomes:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// undefined in strict mode or the global object (window) in non-strict mode
 </span></span></span></code></pre></div><h3 id="3-inside-a-class-method">3. Inside a Class Method:<a hidden class="anchor" aria-hidden="true" href="#3-inside-a-class-method">#</a></h3>
 <p>This is simple, the <code>this</code> keyword will associate itself with the closest object with which it is called.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cake</span> {
@@ -602,8 +651,7 @@ In this case, the <code>this</code> keyword will always refer to the object whic
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ananas</span>.<span style="color:#a6e22e">bake</span>();
 </span></span></code></pre></div><hr>
 <h3 id="4-a-function-nested-inside-a-class-method-tricky-one">4. A function nested inside a Class Method (Tricky one)<a hidden class="anchor" aria-hidden="true" href="#4-a-function-nested-inside-a-class-method-tricky-one">#</a></h3>
-<p>In case we have a function nested inside a class function, and we try to call the class function with help of an object, the <code>this</code> keyword will go crazy. It starts to behave like a normal function and so it outputs undefined in strict mode or global object in non-strict mode.
-Bear with me I will explain the fix as well.</p>
+<p>In case we have a function nested inside a class function, and we try to call the class function with help of an object, the <code>this</code> keyword will go crazy. It starts to behave like a normal function and so it outputs undefined in strict mode or global object in non-strict mode.</p>
 <p><strong>Reason:</strong> First let us understand why? The reason <code>this</code> inside a nested function doesn’t refer to the class instance is because <code>this</code> is dynamically bound based on how a function is called, not where it is written unless it’s an arrow function which borrows the scope of it&rsquo;s just outer lexical scope for <code>this</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cake</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">constructor</span>() {
@@ -678,6 +726,231 @@ Bear with me I will explain the fix as well.</p>
       <tr>
           <td>Arrow function</td>
           <td><strong>Lexically inherited</strong> from parent scope</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="6-how-to-promisify-a-callback-based-function">6: How to Promisify A Callback based Function?<a hidden class="anchor" aria-hidden="true" href="#6-how-to-promisify-a-callback-based-function">#</a></h2>
+<h3 id="interviewer-perspective-4">Interviewer Perspective<a hidden class="anchor" aria-hidden="true" href="#interviewer-perspective-4">#</a></h3>
+<p>Migration from ES5 to ES6 of some older apis which are still needed but do not have async/await implementation requires this as a daily task sometimes to promisify before using it directly.</p>
+<h3 id="correct-answer-2">Correct Answer<a hidden class="anchor" aria-hidden="true" href="#correct-answer-2">#</a></h3>
+<p>Approach: Goal - to have a function which converts a legacy callback based functions to promise based functions.
+Implies - return type is a function, and arguments would be legacy callback.
+Steps for above would be:</p>
+<ol>
+<li>Make a general purpose <code>promisify</code> function which will take a callback and return an equivalent function which mimics async/await behaviour.</li>
+<li>Within <code>promisify</code> return a <code>function</code>, which takes required arguments for our legacy callback.</li>
+<li>Within this function, return a promise, in which we can call our legacy callback, and resolve or reject based on it&rsquo;s response.</li>
+</ol>
+<h3 id="code-example-1">Code Example<a hidden class="anchor" aria-hidden="true" href="#code-example-1">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promisify</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fn</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Return a new function that wraps `fn` inside a Promise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (...<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Create and return a new Promise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// Call the original function `fn` with all original args
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// Add a callback as the last argument to handle result/error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">fn</span>(...<span style="color:#a6e22e">args</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// If there&#39;s an error, reject the Promise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// Otherwise, resolve it with the result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">else</span> <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>			});
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Let us try to understand how above will be used and the impact it brings to our code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// if odd --&gt; Odd Num Error, else Resolved.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onlyEvenNumResolves</span>(<span style="color:#a6e22e">num</span>, <span style="color:#a6e22e">my_callback</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">my_callback</span>(<span style="color:#e6db74">&#34;Odd Num Error&#34;</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> <span style="color:#a6e22e">my_callback</span>(<span style="color:#66d9ef">null</span>, { <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Resolution achieved!&#34;</span> });
+</span></span><span style="display:flex;"><span>	}, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Converting this using our promisify
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promiseBasedEvenNumResolves</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promisify</span>(<span style="color:#a6e22e">onlyEvenNumResolves</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runMyPromisifiedFunction</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseBasedEvenNumResolves</span>(<span style="color:#a6e22e">num</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Success&#34;</span>, <span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Error: &#34;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">runMyPromisifiedFunction</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Explanation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Promisify</strong></td>
+          <td>Convert a callback-style function to return a Promise</td>
+      </tr>
+      <tr>
+          <td><strong>Promise</strong></td>
+          <td>Modern async pattern that lets you write cleaner async code</td>
+      </tr>
+      <tr>
+          <td><strong><code>resolve()</code></strong></td>
+          <td>Marks the Promise as successful</td>
+      </tr>
+      <tr>
+          <td><strong><code>reject()</code></strong></td>
+          <td>Marks the Promise as failed</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="7-what-do-you-know-about-sequential-and-parallel-promises">7: What do you know about sequential and parallel promises?<a hidden class="anchor" aria-hidden="true" href="#7-what-do-you-know-about-sequential-and-parallel-promises">#</a></h2>
+<p>The calls to api are made in asynchronous pattern. Weather one result depends on the other allows us to choose the pattern in which we can make the api calls.
+If my api call 2 has some dependency on api call 1, I would perform the operations sequentially, otherwise we can opt for parallel execution to improve performance as the calls are independent of each other.</p>
+<p>Let us take example of 2 dummy API one will fetch our user information and other will fetch Orders made by a user information.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fetchUser</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">setTimeout</span>(
+</span></span><span style="display:flex;"><span>			() =&gt;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">resolve</span>([
+</span></span><span style="display:flex;"><span>					{ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Alice&#34;</span> },
+</span></span><span style="display:flex;"><span>					{ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Max&#34;</span> }
+</span></span><span style="display:flex;"><span>				]),
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>		);
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fetchOrders</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">setTimeout</span>(
+</span></span><span style="display:flex;"><span>			() =&gt;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">resolve</span>([
+</span></span><span style="display:flex;"><span>					{ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">OrderId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">101</span>, <span style="color:#a6e22e">item</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Laptop&#34;</span> },
+</span></span><span style="display:flex;"><span>					{ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">OrderId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">202</span>, <span style="color:#a6e22e">item</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Deodorant&#34;</span> }
+</span></span><span style="display:flex;"><span>				]),
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>		);
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Since the APIs are independent in logic and syntax as well. We can go for parallel execution. And in that process, <code>Promise.all()</code> function helps us to execute them in parallel.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">fetchInParallelAsync</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">fetchUser</span>(), <span style="color:#a6e22e">fetchOrders</span>()]);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Parallel Async:&#34;</span>, { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Takes appx max of all API calls
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Or we can opt for sequential execution to see how it is different:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fetchSequentiallyAsync</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> =&gt; () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">orders</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchOrders</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Sequential Async:&#34;</span>, { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Takes appx sum of all API calls time.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h4 id="but-since-js-is-single-threaded-how-are-we-able-to-execute-something-in-parallel">But since JS is single threaded how are we able to execute something in Parallel?<a hidden class="anchor" aria-hidden="true" href="#but-since-js-is-single-threaded-how-are-we-able-to-execute-something-in-parallel">#</a></h4>
+<p>Javascript is single threaded language, so it is not exactly parallel execution on multiple threads. Instead this is concurrency which gives us the illusion of parallel execution. These api network calls, timeouts are offloaded to the browser environment of Web API or Libuv in NodeJS and once the output of these non-blocking operations is ready which is kept track off by the browser environment, we take them back in our call stack of event loop for execution.
+Remember the following terms:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call Stack</strong></td>
+          <td>JS code is executed here, synchronously, one at a time</td>
+      </tr>
+      <tr>
+          <td><strong>Web APIs</strong></td>
+          <td>Provided by the browser (e.g., <code>fetch</code>, <code>setTimeout</code>, etc.)</td>
+      </tr>
+      <tr>
+          <td><strong>Callback / MacroTask Queue</strong></td>
+          <td>Where async callbacks are queued when ready</td>
+      </tr>
+      <tr>
+          <td><strong>Microtask Queue</strong></td>
+          <td>Where <code>Promise.then</code>, <code>async/await</code> results go</td>
+      </tr>
+      <tr>
+          <td><strong>Event Loop</strong></td>
+          <td>Orchestrates execution between stack and queues</td>
+      </tr>
+  </tbody>
+</table>
+<p>In this piece of code let us deep dive into the steps which take place when we use <code>Promise.all()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">fetchInParallelAsync</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">fetchUser</span>(), <span style="color:#a6e22e">fetchOrders</span>()]);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Parallel Async:&#34;</span>, { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span> });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol>
+<li><code>fetchInParallelAsync</code> function enters our call stack, and waits for it&rsquo;s execution by the JS Engine.</li>
+<li>On it&rsquo;s right time, 2 non-blocking API calls are sent to the WebAPI of browser, which processes the network requests in it&rsquo;s own environment without disturbing our JS Thread.</li>
+<li>Our thread is free and it can take up the next task as scheduled in the Micro task or macro task queue or if both are empty, it can check in the call stack.</li>
+<li>Web API is continously checking if the result of both calls is ready or not. Once it is ready, the Promises are added to the Micro Task queue for execution.</li>
+<li>JS Engine picks them up, creates a new Promise for promise.All() and sends back the result to us as response of both the apis.</li>
+</ol>
+<p>Note that we use <code>promise.all()</code> if we want to receive results of all promises whereas, we use <code>promise.allSettled()</code> if we want results of all the APIs whether they return response or error out.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#a6e22e">Time</span> <span style="color:#ae81ff">0</span><span style="color:#a6e22e">ms</span><span style="color:#f92672">--&gt;</span> <span style="color:#ae81ff">100</span><span style="color:#a6e22e">ms</span><span style="color:#f92672">--&gt;</span> <span style="color:#ae81ff">200</span><span style="color:#a6e22e">ms</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">so</span> <span style="color:#a6e22e">on</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">fetchUser</span>() <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">stack</span>] <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Web</span> <span style="color:#a6e22e">API</span> <span style="color:#a6e22e">handling</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Done</span> <span style="color:#960050;background-color:#1e0010">@</span> <span style="color:#ae81ff">1000</span><span style="color:#a6e22e">ms</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Microtask</span> <span style="color:#a6e22e">Queue</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Wait</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">fetchOrders</span>() <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">stack</span>] <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Web</span> <span style="color:#a6e22e">API</span> <span style="color:#a6e22e">handling</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Done</span> <span style="color:#960050;background-color:#1e0010">@</span> <span style="color:#ae81ff">1500</span><span style="color:#a6e22e">ms</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Microtask</span> <span style="color:#a6e22e">Queue</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">Wait</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">After</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">1500</span><span style="color:#a6e22e">ms</span> <span style="color:#f92672">--&gt;</span> <span style="color:#a6e22e">All</span> <span style="color:#a6e22e">microtasks</span> <span style="color:#a6e22e">resolved</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">Event</span> <span style="color:#a6e22e">Loop</span> <span style="color:#a6e22e">resumes</span> <span style="color:#66d9ef">function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Now</span> <span style="color:#a6e22e">we</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>({ <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">orders</span> }) <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">printed</span>
+</span></span></code></pre></div><p>Take a look at the following commonly used Promise handling methods:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>Syntax</th>
+          <th>Description</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Promise.all</code></td>
+          <td><code>Promise.all([p1, p2])</code></td>
+          <td>Waits for all to resolve; fails on one</td>
+          <td>Parallel API calls</td>
+      </tr>
+      <tr>
+          <td><code>Promise.race</code></td>
+          <td><code>Promise.race([p1, p2])</code></td>
+          <td>Resolves/rejects as soon as one settles</td>
+          <td>Timeout handling</td>
+      </tr>
+      <tr>
+          <td><code>Promise.allSettled</code></td>
+          <td><code>Promise.allSettled([p1, p2])</code></td>
+          <td>Resolves when all settle, never fails</td>
+          <td>Report all outcomes</td>
+      </tr>
+      <tr>
+          <td><code>Promise.any</code></td>
+          <td><code>Promise.any([p1, p2])</code></td>
+          <td>Resolves with first fulfilled, fails if all reject</td>
+          <td>Fastest successful result</td>
+      </tr>
+      <tr>
+          <td><code>Promise.resolve</code></td>
+          <td><code>Promise.resolve(value)</code></td>
+          <td>Creates a resolved promise</td>
+          <td>Simulate fulfilled async response</td>
+      </tr>
+      <tr>
+          <td><code>Promise.reject</code></td>
+          <td><code>Promise.reject(error)</code></td>
+          <td>Creates a rejected promise</td>
+          <td>Simulate an error</td>
       </tr>
   </tbody>
 </table>

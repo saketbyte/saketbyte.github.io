@@ -15,8 +15,8 @@ params:
       subtitle: "saketbyte"
       imageUrl: "img/profile.jpg" # optional
       imageTitle: "Profile" # optional
-      imageWidth: 130 # custom size
-      imageHeight: 120 # custom size
+      imageWidth: 200 # custom size
+      imageHeight: 190 # custom size
       buttons:
          - name: Resume
            url: "/posts/resume"

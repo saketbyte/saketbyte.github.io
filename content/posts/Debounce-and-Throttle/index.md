@@ -105,6 +105,15 @@ It returns a function with a timer, which is asynchronous task and handled by We
 ![Event Loop in JS (Pic from GFG)](EventLoopJS.jpg "Event Loop Diagram from GFG")
 
 (Prerequisite - Event Loop)
+A brief refresher:
+
+| Component                      | Description                                                 |
+| ------------------------------ | ----------------------------------------------------------- |
+| **Call Stack**                 | JS code is executed here, synchronously, one at a time      |
+| **Web APIs**                   | Provided by the browser (e.g., `fetch`, `setTimeout`, etc.) |
+| **Callback / MacroTask Queue** | Where async callbacks are queued when ready                 |
+| **Microtask Queue**            | Where `Promise.then`, `async/await` results go              |
+| **Event Loop**                 | Orchestrates execution between stack and queues             |
 
 Few dots you can connect by seeing the diagram above -
 

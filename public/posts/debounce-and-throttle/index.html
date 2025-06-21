@@ -220,7 +220,38 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Will log after 300ms (if not called again in between)
 </span></span></span></code></pre></div><p>It returns a function with a timer, which is asynchronous task and handled by Web API of <code>setTimeout()</code> once that timer is over, it will move the debounced function <code>func()</code> to our callback queue/Macrotask queue, which in correct sequence pushes the function to event loop and call stack with required global/local context to execute <code>func()</code>.</p>
 <p><img alt="Event Loop in JS (Pic from GFG)" loading="lazy" src="/posts/debounce-and-throttle/EventLoopJS.jpg" title="Event Loop Diagram from GFG"></p>
-<p>(Prerequisite - Event Loop)</p>
+<p>(Prerequisite - Event Loop)
+A brief refresher:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call Stack</strong></td>
+          <td>JS code is executed here, synchronously, one at a time</td>
+      </tr>
+      <tr>
+          <td><strong>Web APIs</strong></td>
+          <td>Provided by the browser (e.g., <code>fetch</code>, <code>setTimeout</code>, etc.)</td>
+      </tr>
+      <tr>
+          <td><strong>Callback / MacroTask Queue</strong></td>
+          <td>Where async callbacks are queued when ready</td>
+      </tr>
+      <tr>
+          <td><strong>Microtask Queue</strong></td>
+          <td>Where <code>Promise.then</code>, <code>async/await</code> results go</td>
+      </tr>
+      <tr>
+          <td><strong>Event Loop</strong></td>
+          <td>Orchestrates execution between stack and queues</td>
+      </tr>
+  </tbody>
+</table>
 <p>Few dots you can connect by seeing the diagram above -</p>
 <ul>
 <li>Closure is created and the function is returned with it&rsquo;s unique timer ID and args (called Controller function).</li>
