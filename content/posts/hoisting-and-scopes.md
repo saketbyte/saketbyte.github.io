@@ -1,25 +1,26 @@
 ---
 title: "Hoisting and Scopes"
-date: 2025-06-19T13:07:39+05:30
-draft: true
+date: 2025-06-22T13:07:39+05:30
+draft: false
 description: "Clearing the confusion around Hoisting, scopes, var let const etc."
 tags: ["JavaScript", "Interview", "Coding", "Frontend"]
 categories: ["JavaScript", "Interview Prep"]
 ---
 
-# Technical Blog Title
-
 ## Table of Contents
 
-1. [Hoisting](#hositing)
+1. [Hoisting](#hoisting)
 2. [Hoisting Behavior](#hoisting-behavior-of-variables)
-3. [Temporal Dead Zone](#temporal-dead-zone)
-4. [Guess the output?](#guess-the-output)
-5. [Key Takeaway](#key-takeaways)
+3. [Scope Related Behaviour of Variables](#scope-related-behavior-of-variables)
+4. [Temporal Dead Zone](#temporal-dead-zone)
+5. [Fun Question](#fun-question)
+6. [Summary](#summary)
 
 ---
 
 # Hoisting
+
+(Bubble up and fill in the fragrance of undefined! XD)
 
 In JavaScript, **hoisting** refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between `var`, `let`, and `const`.
 
@@ -179,7 +180,7 @@ Now here, the difference between var and let is not that clear, because whiteCho
 
 -  **Lexical Environment :** A Lexical Environment is a structure that holds identifiers (variables/functions) and references to outer environments (called the outer environment reference). Think of it like a scope + closure reference.
 
--  **Behind the Scences :**The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.
+-  **Behind the Scences :** The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.
 
 #### var
 
@@ -205,6 +206,37 @@ const counter = () => {
 };
 
 // Think about how closures are working in above.
+```
+
+---
+
+Solution:
+
+```js
+// Test like this:
+
+const counter = () => {
+	let count = 0;
+
+	return {
+		increase: (step = 1) => {
+			count += step;
+		},
+		getValue: () => {
+			return count;
+		}
+	};
+};
+
+const f = counter();
+f.increase();
+console.log(f.getValue());
+f.increase();
+console.log(f.getValue());
+f.increase();
+console.log(f.getValue());
+
+// output- 1 2 3
 ```
 
 ---

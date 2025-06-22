@@ -133,31 +133,26 @@
     <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Hoisting and Scopes
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
     </h1>
     <div class="post-description">
       Clearing the confusion around Hoisting, scopes, var let const etc.
     </div>
-    <div class="post-meta"><span title='2025-06-19 13:07:39 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;7 min
+    <div class="post-meta"><span title='2025-06-22 13:07:39 +0530 IST'>June 22, 2025</span>&nbsp;·&nbsp;7 min
 
 </div>
   </header> 
-  <div class="post-content"><h1 id="technical-blog-title">Technical Blog Title<a hidden class="anchor" aria-hidden="true" href="#technical-blog-title">#</a></h1>
-<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
+  <div class="post-content"><h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
 <ol>
-<li><a href="#hositing">Hoisting</a></li>
+<li><a href="#hoisting">Hoisting</a></li>
 <li><a href="#hoisting-behavior-of-variables">Hoisting Behavior</a></li>
+<li><a href="#scope-related-behavior-of-variables">Scope Related Behaviour of Variables</a></li>
 <li><a href="#temporal-dead-zone">Temporal Dead Zone</a></li>
-<li><a href="#guess-the-output">Guess the output?</a></li>
-<li><a href="#key-takeaways">Key Takeaway</a></li>
+<li><a href="#fun-question">Fun Question</a></li>
+<li><a href="#summary">Summary</a></li>
 </ol>
 <hr>
 <h1 id="hoisting">Hoisting<a hidden class="anchor" aria-hidden="true" href="#hoisting">#</a></h1>
+<p>(Bubble up and fill in the fragrance of undefined! XD)</p>
 <p>In JavaScript, <strong>hoisting</strong> refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between <code>var</code>, <code>let</code>, and <code>const</code>.</p>
 <hr>
 <h2 id="hoisting-behavior-of-variables">Hoisting Behavior of variables<a hidden class="anchor" aria-hidden="true" href="#hoisting-behavior-of-variables">#</a></h2>
@@ -276,7 +271,7 @@ Remember that each function will have an enviornment record in the call stack.</
 <p><strong>Lexical Environment :</strong> A Lexical Environment is a structure that holds identifiers (variables/functions) and references to outer environments (called the outer environment reference). Think of it like a scope + closure reference.</p>
 </li>
 <li>
-<p>**Behind the Scences :**The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.</p>
+<p><strong>Behind the Scences :</strong> The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.</p>
 </li>
 </ul>
 <h4 id="var">var<a hidden class="anchor" aria-hidden="true" href="#var">#</a></h4>
@@ -296,6 +291,32 @@ Remember that each function will have an enviornment record in the call stack.</
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Think about how closures are working in above.
+</span></span></span></code></pre></div><hr>
+<p>Solution:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Test like this:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">increase</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">step</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">count</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">step</span>;
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">getValue</span><span style="color:#f92672">:</span> () =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">count</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">counter</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">increase</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">increase</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">increase</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">getValue</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// output- 1 2 3
 </span></span></span></code></pre></div><hr>
 <h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
 <ul>
@@ -317,15 +338,10 @@ Remember that each function will have an enviornment record in the call stack.</
       <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/debounce-and-throttle/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Debounce and Throttle</span>
-  </a>
-  <a class="next" href="http://localhost:1313/posts/javascript-interview-questions/">
+  <a class="next" href="http://localhost:1313/posts/event-loop-js/">
     <span class="title">Next »</span>
     <br>
-    <span>JavaScript Interview Questions</span>
+    <span>Event Loop JS</span>
   </a>
 </nav>
 
