@@ -6,21 +6,21 @@
     <description>Recent content in Posts on saketbyte</description>
     <generator>Hugo -- 0.147.8</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Jun 2025 13:07:39 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jun 2025 14:12:22 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compare Deeply Nested JS objects</title>
+      <link>http://localhost:1313/posts/deepcompare/</link>
+      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
+      <guid>http://localhost:1313/posts/deepcompare/</guid>
+      <description>A short summary of the post</description>
+    </item>
     <item>
       <title>Hoisting and Scopes</title>
       <link>http://localhost:1313/posts/hoisting-and-scopes/</link>
       <pubDate>Sun, 22 Jun 2025 13:07:39 +0530</pubDate>
       <guid>http://localhost:1313/posts/hoisting-and-scopes/</guid>
       <description>Clearing the confusion around Hoisting, scopes, var let const etc.</description>
-    </item>
-    <item>
-      <title>Event Loop JS</title>
-      <link>http://localhost:1313/posts/event-loop-js/</link>
-      <pubDate>Fri, 20 Jun 2025 08:52:17 +0530</pubDate>
-      <guid>http://localhost:1313/posts/event-loop-js/</guid>
-      <description>A short summary of the post</description>
     </item>
     <item>
       <title>Debounce and Throttle</title>

@@ -136,6 +136,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Compare Deeply Nested JS objects
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Compare Deeply Nested Objects in JS This is a frequently asked question in interviews for Frontend or in general roles where you are expected to work in Javascript.
+I will go through each and every step which is required for a beginner to understand all the concepts required to tackle this or any deviation of the question. I was asked the question in my first interview of job switch, and I messed it up by figuring out all the logic during interview, never having seen this earlier. I do not want that to happen to me or my readers again. 😇
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-26 14:12:22 +0530 IST'>June 26, 2025</span>&nbsp;·&nbsp;10 min</footer>
+  <a class="entry-link" aria-label="post link to Compare Deeply Nested JS objects" href="http://localhost:1313/posts/deepcompare/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hoisting and Scopes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Table of Contents Hoisting Hoisting Behavior Scope Related Behaviour of Variables Temporal Dead Zone Fun Question Summary Hoisting (Bubble up and fill in the fragrance of undefined! XD)
+In JavaScript, hoisting refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between var, let, and const.
+Hoisting Behavior of variables var Variables Variables declared using var are hoisted and initialized with undefined. This means that even if you try to access the variable before its declaration, the code won’t throw an error; instead, you’ll get undefined.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-22 13:07:39 +0530 IST'>June 22, 2025</span>&nbsp;·&nbsp;7 min</footer>
+  <a class="entry-link" aria-label="post link to Hoisting and Scopes" href="http://localhost:1313/posts/hoisting-and-scopes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Debounce and Throttle
     </h2>
   </header>
@@ -150,35 +179,15 @@ Debounce ensures that the function is called only after a specified delay has pa
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Hoisting and Scopes
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Technical Blog Title Table of Contents Hoisting Hoisting Behavior Temporal Dead Zone Guess the output? Key Takeaway Hoisting In JavaScript, hoisting refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between var, let, and const.
-Hoisting Behavior of variables var Variables Variables declared using var are hoisted and initialized with undefined. This means that even if you try to access the variable before its declaration, the code won’t throw an error; instead, you’ll get undefined.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-06-19 13:07:39 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;7 min</footer>
-  <a class="entry-link" aria-label="post link to Hoisting and Scopes" href="http://localhost:1313/posts/hoisting-and-scopes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">JavaScript Interview Questions
     </h2>
   </header>
   <div class="entry-content">
-    <p>JavaScript Interview Questions 1: Playing with a typical API response and basic functions in JS const users = [ { id: 1, name: &#34;name1&#34;, premiumUser: true ,&#34;age&#34;:&#34;20&#34;}, { id: 2, name: &#34;name2&#34;, premiumUser: true ,&#34;age&#34;:&#34;40&#34;}, { id: 3, name: &#34;name3&#34;, premiumUser: false,&#34;age&#34;:&#34;40&#34; } { id: 4, name: &#34;name4&#34;, premiumUser: false,&#34;age&#34;:&#34;30&#34; } ]; // Result // [&#39;name1&#39;, &#39;name2&#39;, &#39;name3&#39;] Interviewer Perspective The interview is looking forward to make you comfortable and testing the waters as to what levels can they go to.
-Extracting Names from above object Using a basic for loop const names = []; for(let i =0;i&lt;user.length;i&#43;&#43;) names.push(users[i].name); console.log(&#34;Names: &#34;names); Using forEach const names = []; users.forEach((user) =&gt; { names.push(user.name); }); console.log(names); Using map const names = users.map((user) =&gt; user.name); console.log(names); Let us check some other interesting functions: Filter premium users // Filter the names of the users who have availed premium service const names = users.filter((user) =&gt; user.premiumUser).map(user=&gt;user.name); console.log(user.name); Sort based on age Any sorting will take a predicate function which gives a simple answer - what makes this larger/smaller/equal. Based on this boolean value, we can sort anything.
+    <p>JavaScript Interview Questions 1: Playing with a typical API response and basic functions in JS const users = [ { id: 1, name: &#34;name1&#34;, premiumUser: true, age: &#34;20&#34; }, { id: 2, name: &#34;name2&#34;, premiumUser: true, age: &#34;40&#34; }, { id: 3, name: &#34;name3&#34;, premiumUser: false, age: &#34;40&#34; }, { id: 4, name: &#34;name4&#34;, premiumUser: false, age: &#34;30&#34; } ]; // Result // [&#39;name1&#39;, &#39;name2&#39;, &#39;name3&#39;] Interviewer Perspective The interview is looking forward to make you comfortable and testing the waters as to what levels can they go to.
+Extracting Names from above object Using a basic for loop const names = []; for(let i =0;i&lt;user.length;i&#43;&#43;) names.push(users[i].name); console.log(&#34;Names: &#34;names); Using forEach const names = []; users.forEach((user) =&gt; { names.push(user.name); }); console.log(names); Using map const names = users.map((user) =&gt; user.name); console.log(names); Let us check some other interesting functions: Filter premium users // forEach const names =[] users.forEach(curr =&gt; { if(curr.premiumUser) names.push(curr.name) }) console.log(names) // Filter the names of the users who have availed premium service const names = users.filter((user) =&gt; user.premiumUser).map(user=&gt;user.name); console.log(user.name); // Notice that in arrow functions it is not mandatory to write return keyword when eliding {}. Sort based on age Any sorting will take a predicate function which gives a simple answer - what makes this larger/smaller/equal. Based on this boolean value, we can sort anything.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-06-19 10:00:00 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;11 min</footer>
+  <footer class="entry-footer"><span title='2025-06-19 10:00:00 +0530 IST'>June 19, 2025</span>&nbsp;·&nbsp;18 min</footer>
   <a class="entry-link" aria-label="post link to JavaScript Interview Questions" href="http://localhost:1313/posts/javascript-interview-questions/"></a>
 </article>
     </main>

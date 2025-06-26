@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Coding Question on saketbyte</title>
+    <link>http://localhost:1313/tags/coding-question/</link>
+    <description>Recent content in Coding Question on saketbyte</description>
+    <generator>Hugo -- 0.147.8</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jun 2025 14:12:22 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/coding-question/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compare Deeply Nested JS objects</title>
+      <link>http://localhost:1313/posts/deepcompare/</link>
+      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
+      <guid>http://localhost:1313/posts/deepcompare/</guid>
+      <description>A short summary of the post</description>
+    </item>
+  </channel>
+</rss>
