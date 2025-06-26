@@ -15,11 +15,11 @@ I will go through each and every step which is required for a beginner to unders
 
 ## Table of Contents:
 
-1. Objects in JS
-2. Why this is even needed?
-3. Nesting is not the only challenge.
-4. Recursive and Iterative approach.
-5. Slight deviation - track the changes.
+1. [ Objects in JS](#objects-in-js)
+2. [Why this is even needed?](#why-do-we-need-such-a-function)
+3. [Nesting is not the only challenge.](#nesting-is-not-the-only-challenge)
+4. [Recursive and Iterative approach.](#recursive-approach-for-deep-compare)
+5. [Slight deviation - track the changes.](#slight-deviation-question)
 
 ## Objects in JS
 
@@ -347,5 +347,11 @@ function deepCompareIterative(a, b) {
 ```
 
 I hope the concept is clear now. Try writing down the code by hand on a piece of paper. I always do that to make sure I am able to recall the core conepts and some of the syntax to bring fluidity in my code writing.
+
+## Slight Deviation Question
+
+How would you return the actual changes at the same level of nesting instead of mere true and false?
+
+(Hint: Memoisation method in Recursive approach!)
 
 Thank you for reading!
