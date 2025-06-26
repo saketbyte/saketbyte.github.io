@@ -154,6 +154,27 @@ Arrays are both **enumerable** (via indices) and **iterable** (via values).
 
 **Examples**: Arrays, Strings, Maps, Sets, array.keys(), array.entries()
 
+Think of a big cupboard with many drawers lined up in it. And some people like to organise the drawers by pasting a name below the door handle. This makes the otherwise "iterable" drawer "enumerable" now. The named drawer can be quickly accessed, someone can say - "Get me the blue colored medicine from the medicine drawer." and another way would be without those labels - "Check the cupboard and get me the blue colored medicine please?". In the second case we will be iterating through the drawers and accessing the info, while in the first case, we had it enumerable.
+
+Technically speaking, `[Symbol.iterator]` is added to an enumerable object to make it iterable. It is a generator function which will yield the value one by one.
+
+```js
+const obj = {
+	a: 10,
+	b: 20,
+	c: 30,
+	[Symbol.iterator]: function* () {
+		for (const key of Object.keys(this)) {
+			yield this[key];
+		}
+	}
+};
+
+for (const value of obj) {
+	console.log(value); // Output: 10, 20, 30
+}
+```
+
 Methods which are specific only to arrays can be:
 
 ```js
