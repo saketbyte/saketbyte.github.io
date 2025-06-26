@@ -9,10 +9,17 @@
     <lastBuildDate>Thu, 26 Jun 2025 14:12:22 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Coding Question</title>
-      <link>http://localhost:1313/tags/coding-question/</link>
+      <title>Coding</title>
+      <link>http://localhost:1313/tags/coding/</link>
       <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/tags/coding-question/</guid>
+      <guid>http://localhost:1313/tags/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frontend</title>
+      <link>http://localhost:1313/tags/frontend/</link>
+      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
+      <guid>http://localhost:1313/tags/frontend/</guid>
       <description></description>
     </item>
     <item>
@@ -23,23 +30,9 @@
       <description></description>
     </item>
     <item>
-      <title>Coding</title>
-      <link>http://localhost:1313/tags/coding/</link>
-      <pubDate>Sun, 22 Jun 2025 13:07:39 +0530</pubDate>
-      <guid>http://localhost:1313/tags/coding/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Frontend</title>
-      <link>http://localhost:1313/tags/frontend/</link>
-      <pubDate>Sun, 22 Jun 2025 13:07:39 +0530</pubDate>
-      <guid>http://localhost:1313/tags/frontend/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>JavaScript</title>
       <link>http://localhost:1313/tags/javascript/</link>
-      <pubDate>Sun, 22 Jun 2025 13:07:39 +0530</pubDate>
+      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
       <guid>http://localhost:1313/tags/javascript/</guid>
       <description></description>
     </item>

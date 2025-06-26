@@ -129,6 +129,95 @@ if (a instanceof Map && b instanceof Map) {
 }
 ```
 
+---
+
+**Nota Bene** How do you correctly extract the Keys of an object or an array?
+
+There are several methods inbuilt in JS to achieve the functionality, but we have to pick according to our usecase which is independent of types and easy to traverse (enumerate or iterate).
+Object.keys(), Object.getOwnPropertyname(), Reflect.ownKeys() etc.
+
+But what is Enumerable vs Iterable?
+
+### Enumerable
+
+A property is enumerable if it shows up during property enumeration like for...in or Object.keys().
+**Objects** are **enumerable** only and not **iterable**.
+
+We can check via:
+Object.getOwnPropertyDescriptor(obj, 'key').enumerable
+
+### Iterable
+
+An object is iterable if it implements the Symbol.iterator method. We can use for...of on iterables.
+
+Arrays are both **enumerable** (via indices) and **iterable** (via values).
+
+**Examples**: Arrays, Strings, Maps, Sets, array.keys(), array.entries()
+
+Methods which are specific only to arrays can be:
+
+```js
+// using in-built functions for arrays
+
+Object.keys(array);
+
+array.keys();
+
+Array.prototype.entries();
+
+//using for in loop
+for (let idx in array) {
+	// continue
+}
+```
+
+Methods specific to Objects only would be:
+
+```js
+// using in-built functions for Objects
+
+Object.keys(obj);
+
+Object.getOwnPropertyNames(obj);
+
+Object.getOwnPropertySymbols(obj); // Only symbol keys
+
+Reflect.ownKeys(obj); // Gets all property keys even non-ennumerable and includes a length key.
+
+// using for loop
+for (let key in obj) {
+	//continue
+}
+```
+
+#### Okay just tell me what to use?
+
+| Method                         | Works on Object | Works on Array | Includes Symbol Keys | Includes Non-Enumerable Keys            |
+| ------------------------------ | --------------- | -------------- | -------------------- | --------------------------------------- |
+| `Object.keys()`                | Yes             | Yes            | No                   | No                                      |
+| `Object.getOwnPropertyNames()` | Yes             | Yes            | No                   | Yes                                     |
+| **Reflect.ownKeys()**          | **Yes**         | **Yes**        | **Yes**              | **Yes**                                 |
+| `for...in`                     | Yes             | Yes            | No                   | No (but includes inherited values too.) |
+
+(Inherited values? It also includes keys inherited from its prototype if they are enumerable.)
+
+```js
+const parent = { inheritedKey: "hello" };
+const child = Object.create(parent);
+child.ownKey = "world";
+
+for (let key in child) {
+	console.log(key); // Op "ownKey", "inheritedKey"
+}
+
+console.log(Object.keys(child)); //Op ["ownKey"]
+```
+
+As I mentioned we want things to be independent of types as much as possible so that the code stays robust and also does not leave out anything crucial.
+Hence we end up with the choice of `Reflect.ownKeys()`, because it allows us to have an enumerable array of keys which we can iterate and it works on both types array or Object both while including inherited keys and Symbols too.
+
+---
+
 f. Arrays
 
 ```js
