@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Promise Aggregator Functions Implementation | saketbyte</title>
+<meta name="keywords" content="JavaScript, Interview, Coding, Frontend">
+<meta name="description" content="This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage">
+<meta name="author" content="">
+<link rel="canonical" href="https://saketbyte.github.io/posts/promise.all-implementation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e2798bd88395b9feeb2a4d73d504608d19dd39a782d06959c3fdddef0230dd44.css" integrity="sha256-4nmL2IOVuf7rKk1z1QRgjRndOaeC0GlZw/3d7wIw3UQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://saketbyte.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://saketbyte.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://saketbyte.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://saketbyte.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://saketbyte.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://saketbyte.github.io/posts/promise.all-implementation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://saketbyte.github.io/posts/promise.all-implementation/">
+  <meta property="og:site_name" content="saketbyte">
+  <meta property="og:title" content="Promise Aggregator Functions Implementation">
+  <meta property="og:description" content="This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-02T20:58:12+05:30">
+    <meta property="article:modified_time" content="2025-07-02T20:58:12+05:30">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Interview">
+    <meta property="article:tag" content="Coding">
+    <meta property="article:tag" content="Frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Promise Aggregator Functions Implementation">
+<meta name="twitter:description" content="This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://saketbyte.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Promise Aggregator Functions Implementation",
+      "item": "https://saketbyte.github.io/posts/promise.all-implementation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Promise Aggregator Functions Implementation",
+  "name": "Promise Aggregator Functions Implementation",
+  "description": "This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage",
+  "keywords": [
+    "JavaScript", "Interview", "Coding", "Frontend"
+  ],
+  "articleBody": "Contents: Promise.all Promise.allSettled Promise.any Promise.race JavaScript’s Promise.all, Promise.allSettled, Promise.any and Promise.race are essential when managing multiple async operations. But what really happens under the hood? In this post, let us rebuild each from scratch using async/await only and visualize how they interact with the event loop.\nFirst like always a brief refresher of Event loop components.\nComponent Description Call Stack Runs synchronous code one line at a time Web APIs Handles async operations like fetch, setTimeout, etc. Microtask Queue Queues await/.then resolutions Macrotask Queue Queues setTimeout, DOM events, etc. Event Loop Orchestrates moving tasks from queues into the call stack Let us start.\nPromise.all – Fail-Fast-Policy Promise.all shoots all the promises concurrently and gives us the final result in max(T_promise_1,T_promise_2.... T_promise_n) time, but returns immediately as soon as the earliest error/rejection is received.\nUnderstanding the requirements:\nExecution Behaviour : Resolves only when all promises fulfill. Rejects immediately if any promise fails.\nThis kind of behaviour is useful when the final outcome has mandatory dependencies on more than one promises. And even if one of the promise fails, we cannot proceed further. Hence for this kind of fail fast and return logic we use promise.all.\nEdge Cases :\nThe return type should be a promise because user might have to chain it or use await on the response again.\nIf the iterable of promises received is blank then we have to return back blank array.\nThe order of return values stored in returned promise should be the same as that of input respectively.\nThe returned Promise can contain non promise objects.\nImplementation Logic: Check for the edge case of input being empty and once that is cleared we can dive deeper into the code.\nWe can iterate on the iterable using forEach or map if we want to create a new array. We also need to check if we have resolved all promises or not, and break immediately if even one of them fails.\nNote that: forEach is an older functionality which does not utilise asynchronous method so either we wrap it in an asynchronous function or we use an IIFE. Or we can totally avvoid forEach by using map function.\nThis function behaves like if and only if everyone has completed the work the entire class will get a games period, even if one fails, the entire class will not get the reward.\nImplementation (with async/await) // Promise.all() = promiseAll async function promiseAll(promises) { // array to store the result of Promises. const results = []; // Number of resolved Promises to ensure all are resolved before returning. let resolvedCount = 0; // As discussed above we need to return a promise object from the function. return new Promise((resolve, reject) =\u003e { if (promises.length === 0) { resolve(results); return; } // iterating through each promise index-wise in same order. promises.forEach((p, index) =\u003e { // Used an async IIFE here, but an async func or map can be used too // IIFE is called inside forEach separately for each Promise to make it async. // forEach(async (p,idx)) won't work it is like a for loop which does not wait for any callback to finish. (async () =\u003e { try { const val = await p; results[index] = val; resolvedCount++; if (resolvedCount === promises.length) { resolve(results); } } catch (err) { reject(err); // Immediately reject on first failure } })(); }); }); } const output = await promiseAll([Promise.resolve(\"A\"), Promise.resolve(\"B\"), Promise.resolve(\"C\")]); // ➝ [\"A\", \"B\", \"C\"] // OR - promiseAll([apiCall1(), apiCall2(), apiCall3()]).then((results) =\u003e {}); output.map(() =\u003e { // do something }); await promiseAll([ Promise.resolve(\"X\"), Promise.reject(\"Y\") // ➝ throws \"Y\" ]); What would a map based iteration look like in above case? // Note the async keyword here allows us to skip asynch IIFE or named function inside it. promises.map(async (p, index) =\u003e { try { const val = await p; results[index] = val; resolvedCount++; if (resolvedCount === promises.length) { resolve(); } } catch (err) { reject(err); } } Promise.allSettled – Record everything Promise.allSettled() is a beautiful function which will come to you after all the promises are settled, either rejected or resolved doesn’t matter. But they will have arrived in their final state before coming to you. This is mainly used when the results required are not mandatory, like get all that you can for now, dont care about rejection.\nUnderstanding the requirements:\nExecution Behaviour : Waits for all promises to finish, regardless of success or failure. Returns an array with status and corresponding value or reason.\nEdge Cases and logic:\nMust wait for all promises to settle ie iether resolved(fulfilled) or rejected. Empty input must return back empty output. The result is an array of JS objects which contain status and value for sucess and status and reason for failure. Promise.allSettled is like a teacher asking has everyone settled or not, it does not matter if the homework of students is finished or not. Just settle down!\nImplementation async function promiseAllSettled(promises) { const results = new Array(promises.length); // creating a new promise await new Promise((resolve) =\u003e { let settledCount = 0; // looping over the promises iterable promises.map(async (p, index) =\u003e { try { const val = await p; // recording the results in same order results[index] = { status: \"fulfilled\", value: val }; } catch (err) { results[index] = { status: \"rejected\", reason: err }; } finally { settledCount++; // sanity check for count of promises if (settledCount === promises.length) { resolve(); } } }); }); return results; } const result = await promiseAllSettled([Promise.resolve(\"OK\"), Promise.reject(\"Failed\")]); console.log(result); // [ // { status: \"fulfilled\", value: \"OK\" }, // { status: \"rejected\", reason: \"Failed\" } // ] Promise.any – Any earliest fulfillment Execution Behaviour: This function Resolves with the first fulfilled promise and will Reject only if all Promises fail. Basically checking the OR of settled states of all promises where fulfilled is T and rejected is F.\nSo if we have p1 and p2 (assume both resolve), in sequence given to promise.any, it will immediately return p1 as resolved.\nEdge cases and logic:\nEmpty input should have an empty array in returned promise. Return at the first success. Reject if all rejected. Think of it like, if a teacher has forgotten her red pen today, and she asks if any student has a red pen. If none of the students answer, the Promise fails, if even one has it, the job is done.\nasync function promiseAny(promises) { const errors = new Array(promises.length); await new Promise((resolve, reject) =\u003e { let rejectedCount = 0; promises.map(async (p, index) =\u003e { try { const val = await p; resolve(val); // resolves first success } catch (err) { errors[index] = err; rejectedCount++; if (rejectedCount === promises.length) { reject(new AggregateError(errors, \"All promises rejected\")); } } }); }); } const result = await promiseAny([Promise.reject(\"A\"), Promise.reject(\"B\"), Promise.resolve(\"C\")]); // ➝ \"C\" //If all fail: await promiseAny([Promise.reject(\"X\"), Promise.reject(\"Y\")]); // throws AggregateError: All promises rejected Promise.race – Any earliest settlement Execution Behaviour : Resolves or rejects as soon as the first promise settles does not matter fulfilled or rejected. Gives the output from the fastest settlment.\nEdge case and logic :\nDo not confuse this with Promise.all(). In case of failure of a promise, it will return immediately just like Promise.all(), but in case of fulfillment of a promise, Promise.all() will look for other promises’ result while Promise.race will return with that also.\nThis helps us to pick the fastest results of all.\nasync function promiseRace(promises) { return new Promise((resolve, reject) =\u003e { // using for of to account for non promise objects. for (const p of promises) { (async () =\u003e { try { const val = await Promise.resolve(p); resolve(val); } catch (err) { reject(err); } })(); } }); } const result = await promiseRace([new Promise((res) =\u003e setTimeout(() =\u003e res(\"Fast\"), 100)), new Promise((res) =\u003e setTimeout(() =\u003e res(\"Slow\"), 500))]); // \"Fast\" Summary of all 4 functions so far: Function fulfills rejects Settled on Output Promise.all all fulfill any one rejects Last to fulfill (if all) Array of values in order Promise.allSettled Never Never After all settle Array of {status, value/reason} Promise.any first fulfills all reject First to fulfill or all Value of first fulfilled, else error Promise.race first to settle fulfills first to settle rejects First to settle Value or reason of first to settle Fun analogy to remember the behaviours: Function Teacher’s Promise Rule Promise.all “If even one student has not completed the homework, no reward for entire class, rejected.” Promise.allSettled “Every student’s record is tracked. No conclusion of failed or settled.” Promise.any “I just need one student to give me a red pen?” Promise.race “Whichever student tries to share their thought process/answer first.” ",
+  "wordCount" : "1431",
+  "inLanguage": "en",
+  "datePublished": "2025-07-02T20:58:12+05:30",
+  "dateModified": "2025-07-02T20:58:12+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://saketbyte.github.io/posts/promise.all-implementation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "saketbyte",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saketbyte.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://saketbyte.github.io/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://saketbyte.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://saketbyte.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://saketbyte.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://saketbyte.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://saketbyte.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://saketbyte.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://saketbyte.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Promise Aggregator Functions Implementation
+    </h1>
+    <div class="post-description">
+      This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage
+    </div>
+    <div class="post-meta"><span title='2025-07-02 20:58:12 +0530 IST'>July 2, 2025</span>&nbsp;·&nbsp;7 min
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="contents">Contents:<a hidden class="anchor" aria-hidden="true" href="#contents">#</a></h2>
+<ol>
+<li>Promise.all</li>
+<li>Promise.allSettled</li>
+<li>Promise.any</li>
+<li>Promise.race</li>
+</ol>
+<p>JavaScript’s Promise.all, Promise.allSettled, Promise.any and Promise.race are essential when managing multiple async operations. But what really happens under the hood? In this post, let us rebuild each from scratch using async/await only and visualize how they interact with the event loop.</p>
+<p>First like always a brief refresher of Event loop components.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Call Stack</strong></td>
+          <td>Runs synchronous code one line at a time</td>
+      </tr>
+      <tr>
+          <td><strong>Web APIs</strong></td>
+          <td>Handles async operations like <code>fetch</code>, <code>setTimeout</code>, etc.</td>
+      </tr>
+      <tr>
+          <td><strong>Microtask Queue</strong></td>
+          <td>Queues <code>await</code>/<code>.then</code> resolutions</td>
+      </tr>
+      <tr>
+          <td><strong>Macrotask Queue</strong></td>
+          <td>Queues <code>setTimeout</code>, DOM events, etc.</td>
+      </tr>
+      <tr>
+          <td><strong>Event Loop</strong></td>
+          <td>Orchestrates moving tasks from queues into the call stack</td>
+      </tr>
+  </tbody>
+</table>
+<p>Let us start.</p>
+<h2 id="promiseall--fail-fast-policy">Promise.all – Fail-Fast-Policy<a hidden class="anchor" aria-hidden="true" href="#promiseall--fail-fast-policy">#</a></h2>
+<p>Promise.all shoots all the promises concurrently and gives us the final result in <code>max(T_promise_1,T_promise_2.... T_promise_n)</code> time, but returns immediately as soon as the earliest error/rejection is received.</p>
+<p>Understanding the requirements:</p>
+<p><strong>Execution Behaviour</strong> : Resolves only when all promises fulfill. Rejects immediately if any promise fails.</p>
+<p>This kind of behaviour is useful when the final outcome has mandatory dependencies on more than one promises. And even if one of the promise fails, we cannot proceed further. Hence for this kind of fail fast and return logic we use promise.all.</p>
+<p><strong>Edge Cases :</strong></p>
+<ol>
+<li>
+<p>The return type should be a promise because user might have to chain it or use await on the response again.</p>
+</li>
+<li>
+<p>If the iterable of promises received is blank then we have to return back blank array.</p>
+</li>
+<li>
+<p>The order of return values stored in returned promise should be the same as that of input respectively.</p>
+</li>
+<li>
+<p>The returned Promise can contain non promise objects.</p>
+</li>
+</ol>
+<h2 id="implementation-logic">Implementation Logic:<a hidden class="anchor" aria-hidden="true" href="#implementation-logic">#</a></h2>
+<p>Check for the edge case of input being empty and once that is cleared we can dive deeper into the code.</p>
+<p>We can iterate on the iterable using forEach or map if we want to create a new array. We also need to check if we have resolved all promises or not, and break <em>immediately</em> if even one of them fails.</p>
+<p><strong>Note that:</strong> forEach is an older functionality which does not utilise asynchronous method so either we wrap it in an asynchronous function or we use an IIFE.
+Or we can totally avvoid forEach by using map function.</p>
+<p>This function behaves like if and only if everyone has completed the work the entire class will get a games period, even if one fails, the entire class will not get the reward.</p>
+<h3 id="implementation-with-asyncawait">Implementation (with async/await)<a hidden class="anchor" aria-hidden="true" href="#implementation-with-asyncawait">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Promise.all() = promiseAll
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">promiseAll</span>(<span style="color:#a6e22e">promises</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// array to store the result of Promises.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Number of resolved Promises to ensure all are resolved before returning.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">resolvedCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// As discussed above we need to return a promise object from the function.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">results</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// iterating through each promise index-wise in same order.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">p</span>, <span style="color:#a6e22e">index</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// Used an async IIFE here, but an async func or map can be used too
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// IIFE is called inside forEach separately for each Promise to make it async.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// forEach(async (p,idx)) won&#39;t work it is like a for loop which does not wait for any callback to finish.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>			(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">p</span>;
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">results</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">resolvedCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">resolvedCount</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>						<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">results</span>);
+</span></span><span style="display:flex;"><span>					}
+</span></span><span style="display:flex;"><span>				} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">// Immediately reject on first failure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				}
+</span></span><span style="display:flex;"><span>			})();
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseAll</span>([Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;A&#34;</span>), Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;B&#34;</span>), Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;C&#34;</span>)]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ➝ [&#34;A&#34;, &#34;B&#34;, &#34;C&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// OR - promiseAll([apiCall1(), apiCall2(), apiCall3()]).then((results) =&gt; {});
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">map</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// do something
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseAll</span>([
+</span></span><span style="display:flex;"><span>	Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;X&#34;</span>),
+</span></span><span style="display:flex;"><span>	Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Y&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// ➝ throws &#34;Y&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>]);
+</span></span></code></pre></div><h3 id="what-would-a-map-based-iteration-look-like-in-above-case">What would a map based iteration look like in above case?<a hidden class="anchor" aria-hidden="true" href="#what-would-a-map-based-iteration-look-like-in-above-case">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Note the async keyword here allows us to skip asynch IIFE or named function inside it.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">p</span>, <span style="color:#a6e22e">index</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">p</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">results</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resolvedCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">resolvedCount</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><h2 id="promiseallsettled--record-everything">Promise.allSettled – Record everything<a hidden class="anchor" aria-hidden="true" href="#promiseallsettled--record-everything">#</a></h2>
+<p><code>Promise.allSettled()</code> is a beautiful function which will come to you after all the promises are settled, either rejected or resolved doesn&rsquo;t matter. But they will have arrived in their final state before coming to you.
+This is mainly used when the results required are not mandatory, like get all that you can for now, dont care about rejection.</p>
+<p>Understanding the requirements:</p>
+<p><strong>Execution Behaviour :</strong> Waits for all promises to finish, regardless of success or failure. Returns an array with status and corresponding value or reason.</p>
+<p><strong>Edge Cases and logic:</strong></p>
+<ol>
+<li>Must wait for all promises to settle ie iether resolved(fulfilled) or rejected.</li>
+<li>Empty input must return back empty output.</li>
+<li>The result is an array of JS objects which contain status and value for sucess and status and reason for failure.</li>
+</ol>
+<p>Promise.allSettled is like a teacher asking has everyone settled or not, it does not matter if the homework of students is finished or not. Just settle down!</p>
+<h3 id="implementation">Implementation<a hidden class="anchor" aria-hidden="true" href="#implementation">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">promiseAllSettled</span>(<span style="color:#a6e22e">promises</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// creating a new promise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">settledCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// looping over the promises iterable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">p</span>, <span style="color:#a6e22e">index</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">p</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// recording the results in same order
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#a6e22e">results</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> { <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fulfilled&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">val</span> };
+</span></span><span style="display:flex;"><span>			} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">results</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> { <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;rejected&#34;</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">err</span> };
+</span></span><span style="display:flex;"><span>			} <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">settledCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// sanity check for count of promises
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">settledCount</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">results</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseAllSettled</span>([Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;OK&#34;</span>), Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Failed&#34;</span>)]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// { status: &#34;fulfilled&#34;, value: &#34;OK&#34; },
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// { status: &#34;rejected&#34;, reason: &#34;Failed&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ]
+</span></span></span></code></pre></div><h2 id="promiseany--any-earliest-fulfillment">Promise.any – Any earliest fulfillment<a hidden class="anchor" aria-hidden="true" href="#promiseany--any-earliest-fulfillment">#</a></h2>
+<p><strong>Execution Behaviour:</strong>
+This function Resolves with the first fulfilled promise and will Reject only if all Promises fail. Basically checking the OR of settled states of all promises where fulfilled is T and rejected is F.</p>
+<p>So if we have p1 and p2 (assume both resolve), in sequence given to promise.any, it will immediately return p1 as resolved.</p>
+<p><strong>Edge cases and logic:</strong></p>
+<ol>
+<li>Empty input should have an empty array in returned promise.</li>
+<li>Return at the first success.</li>
+<li>Reject if all rejected.</li>
+</ol>
+<p>Think of it like, if a teacher has forgotten her red pen today, and she asks if any student has a red pen. If none of the students answer, the Promise fails, if even one has it, the job is done.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">promiseAny</span>(<span style="color:#a6e22e">promises</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errors</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">rejectedCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">p</span>, <span style="color:#a6e22e">index</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">p</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">val</span>); <span style="color:#75715e">// resolves first success
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">errors</span>[<span style="color:#a6e22e">index</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">rejectedCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">rejectedCount</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AggregateError</span>(<span style="color:#a6e22e">errors</span>, <span style="color:#e6db74">&#34;All promises rejected&#34;</span>));
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseAny</span>([Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;A&#34;</span>), Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;B&#34;</span>), Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;C&#34;</span>)]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ➝ &#34;C&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//If all fail:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseAny</span>([Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;X&#34;</span>), Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Y&#34;</span>)]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// throws AggregateError: All promises rejected
+</span></span></span></code></pre></div><h2 id="promiserace--any-earliest-settlement">Promise.race – Any earliest settlement<a hidden class="anchor" aria-hidden="true" href="#promiserace--any-earliest-settlement">#</a></h2>
+<p><strong>Execution Behaviour :</strong> Resolves or rejects as soon as the first promise settles does not matter fulfilled or rejected. Gives the output from the fastest settlment.</p>
+<p><strong>Edge case and logic :</strong></p>
+<p>Do not confuse this with Promise.all(). In case of failure of a promise, it will return immediately just like Promise.all(), but in case of fulfillment of a promise, Promise.all() will look for other promises&rsquo; result while Promise.race will return with that also.</p>
+<p>This helps us to pick the fastest results of all.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">promiseRace</span>(<span style="color:#a6e22e">promises</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// using for of to account for non promise objects.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">promises</span>) {
+</span></span><span style="display:flex;"><span>			(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">p</span>);
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">val</span>);
+</span></span><span style="display:flex;"><span>				} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			})();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">promiseRace</span>([<span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">res</span>) =&gt; <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">res</span>(<span style="color:#e6db74">&#34;Fast&#34;</span>), <span style="color:#ae81ff">100</span>)), <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">res</span>) =&gt; <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">res</span>(<span style="color:#e6db74">&#34;Slow&#34;</span>), <span style="color:#ae81ff">500</span>))]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  &#34;Fast&#34;
+</span></span></span></code></pre></div><h2 id="summary-of-all-4-functions-so-far">Summary of all 4 functions so far:<a hidden class="anchor" aria-hidden="true" href="#summary-of-all-4-functions-so-far">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th><strong><em>fulfills</em></strong></th>
+          <th><strong><em>rejects</em></strong></th>
+          <th><strong>Settled on</strong></th>
+          <th><strong>Output</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Promise.all</strong></td>
+          <td><strong>all fulfill</strong></td>
+          <td><strong>any one rejects</strong></td>
+          <td>Last to fulfill (if all)</td>
+          <td>Array of values in order</td>
+      </tr>
+      <tr>
+          <td><strong>Promise.allSettled</strong></td>
+          <td>Never</td>
+          <td>Never</td>
+          <td>After all settle</td>
+          <td>Array of <code>{status, value/reason}</code></td>
+      </tr>
+      <tr>
+          <td><strong>Promise.any</strong></td>
+          <td><strong>first fulfills</strong></td>
+          <td><strong>all reject</strong></td>
+          <td>First to fulfill or all</td>
+          <td>Value of first fulfilled, else error</td>
+      </tr>
+      <tr>
+          <td><strong>Promise.race</strong></td>
+          <td><strong>first to settle fulfills</strong></td>
+          <td><strong>first to settle rejects</strong></td>
+          <td>First to settle</td>
+          <td>Value or reason of first to settle</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="fun-analogy-to-remember-the-behaviours">Fun analogy to remember the behaviours:<a hidden class="anchor" aria-hidden="true" href="#fun-analogy-to-remember-the-behaviours">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Function</th>
+          <th>Teacher’s Promise Rule</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Promise.all</strong></td>
+          <td><em>“If even one student has not completed the homework, no reward for entire class, rejected.”</em></td>
+      </tr>
+      <tr>
+          <td><strong>Promise.allSettled</strong></td>
+          <td><em>“Every student&rsquo;s record is tracked. No conclusion of failed or settled.”</em></td>
+      </tr>
+      <tr>
+          <td><strong>Promise.any</strong></td>
+          <td><em>“I just need one student to give me a red pen?”</em></td>
+      </tr>
+      <tr>
+          <td><strong>Promise.race</strong></td>
+          <td><em>“Whichever student tries to share their thought process/answer first.”</em></td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://saketbyte.github.io/tags/javascript/">JavaScript</a></li>
+      <li><a href="https://saketbyte.github.io/tags/interview/">Interview</a></li>
+      <li><a href="https://saketbyte.github.io/tags/coding/">Coding</a></li>
+      <li><a href="https://saketbyte.github.io/tags/frontend/">Frontend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://saketbyte.github.io/posts/deepcompare/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Compare Deeply Nested JS objects Interview Question</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://saketbyte.github.io/">saketbyte</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

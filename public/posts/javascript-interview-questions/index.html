@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>JavaScript Interview Questions | saketbyte</title>
 <meta name="keywords" content="JavaScript, Interview, Coding, Frontend">
 <meta name="description" content="Frequently asked JavaScript interview questions with explanations and code examples.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/javascript-interview-questions/">
+<link rel="canonical" href="https://saketbyte.github.io/posts/javascript-interview-questions/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e2798bd88395b9feeb2a4d73d504608d19dd39a782d06959c3fdddef0230dd44.css" integrity="sha256-4nmL2IOVuf7rKk1z1QRgjRndOaeC0GlZw/3d7wIw3UQ=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://saketbyte.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://saketbyte.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://saketbyte.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://saketbyte.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://saketbyte.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/javascript-interview-questions/">
+<link rel="alternate" hreflang="en" href="https://saketbyte.github.io/posts/javascript-interview-questions/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,7 +55,73 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="https://saketbyte.github.io/posts/javascript-interview-questions/">
+  <meta property="og:site_name" content="saketbyte">
+  <meta property="og:title" content="JavaScript Interview Questions">
+  <meta property="og:description" content="Frequently asked JavaScript interview questions with explanations and code examples.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-19T10:00:00+05:30">
+    <meta property="article:modified_time" content="2025-06-19T10:00:00+05:30">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Interview">
+    <meta property="article:tag" content="Coding">
+    <meta property="article:tag" content="Frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript Interview Questions">
+<meta name="twitter:description" content="Frequently asked JavaScript interview questions with explanations and code examples.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://saketbyte.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "JavaScript Interview Questions",
+      "item": "https://saketbyte.github.io/posts/javascript-interview-questions/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "JavaScript Interview Questions",
+  "name": "JavaScript Interview Questions",
+  "description": "Frequently asked JavaScript interview questions with explanations and code examples.",
+  "keywords": [
+    "JavaScript", "Interview", "Coding", "Frontend"
+  ],
+  "articleBody": "JavaScript Interview Questions 1: Playing with a typical API response and basic functions in JS const users = [ { id: 1, name: \"name1\", premiumUser: true, age: \"20\" }, { id: 2, name: \"name2\", premiumUser: true, age: \"40\" }, { id: 3, name: \"name3\", premiumUser: false, age: \"40\" }, { id: 4, name: \"name4\", premiumUser: false, age: \"30\" } ]; // Result // ['name1', 'name2', 'name3'] Interviewer Perspective The interview is looking forward to make you comfortable and testing the waters as to what levels can they go to.\nExtracting Names from above object Using a basic for loop const names = []; for(let i =0;i\u003cuser.length;i++) names.push(users[i].name); console.log(\"Names: \"names); Using forEach const names = []; users.forEach((user) =\u003e { names.push(user.name); }); console.log(names); Using map const names = users.map((user) =\u003e user.name); console.log(names); Let us check some other interesting functions: Filter premium users // forEach const names =[] users.forEach(curr =\u003e { if(curr.premiumUser) names.push(curr.name) }) console.log(names) // Filter the names of the users who have availed premium service const names = users.filter((user) =\u003e user.premiumUser).map(user=\u003euser.name); console.log(user.name); // Notice that in arrow functions it is not mandatory to write return keyword when eliding {}. Sort based on age Any sorting will take a predicate function which gives a simple answer - what makes this larger/smaller/equal. Based on this boolean value, we can sort anything.\n// Refer: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort function compareFn(a, b) { if (a is less than b by some ordering criterion) { return -1; } else if (a is greater than b by the ordering criterion) { return 1; } // a must be equal to b return 0; // normal function in JS function compareAge(u1, u2){ if(u1.age\u003cu2.age) return -1; else if(u1.age\u003eu2.age) return 1; else return 0; } // arrow function format const compareAge = (u1,u2) =\u003e { if(u1.age\u003cu2.age) return -1; else if(u1.age\u003eu2.age) return 1; else return 0; } // Solution with callback as arrow function (Remember sort will mutate the original array) users.sort((user1, user2) =\u003e user1.age \u003c user2.age? -1:1 ); } Sort based on age, filter only premium users, extract their names. // we can chain these operations. const names = users .sort((user1, user2) =\u003e user1.age\u003c user2.age? -1:1 ) .filter((user) =\u003e user.premiumUser) .map(user=\u003euser.name); console.log(user.name); How would you sort objects based on some property? Eg - Sort books name with last name of author.\nconst books = [ {name: \"book1\", author: \"author A\"}, {name: \"book2\", author: \"author D\"}, {name: \"book3\", author: \"author C\"}, {name: \"book4\", author: \"author B\"}, ] books.sort((book1, book2)=\u003e{ // grab last name const lastName1 = book1.author.split(\" \")[1]; const lastName2 = book2.author.split(\" \")[1]; return lastName1\u003clastName2? -1:1; }) console.log(books) // Note that sort will always modify original array on which it is applied on. Anatomy of Filter: Taking directly from developer.mozilla.org docs:\nThe array argument is useful if you want to access another element in the array, especially when you don’t have an existing variable that refers to the array.\nThe following example first uses map() to extract the numerical ID from each name and then uses filter() to select the ones that are greater than its neighbors.\nconst names = [\"JC63\", \"Bob132\", \"Ursula89\", \"Ben96\"]; // Using regex to match and extract digits. const greatIDs = names .map((name) =\u003e parseInt(name.match(/\\d+/)[0], 10)) .filter((id, idx, arr) =\u003e { // Without the arr argument, there's no way to easily access the // intermediate array generated by map function without saving it to a variable. // id is the curr element, idx is the index of that element in arr if (idx \u003e 0 \u0026\u0026 id \u003c= arr[idx - 1]) return false; // comparing on the go in the arr we are building if (idx \u003c arr.length - 1 \u0026\u0026 id \u003c= arr[idx + 1]) return false; return true; }); console.log(greatIDs); // [132, 96] // The array argument is not the array that is being built. // There is no way to access the array being built from the callback function. Application of reduce function: const arr = [1, 2, 3, 4]; // Basic syntax: // reduce(callback) // reduce(callback(storeInMe, currElement), start value) const total = arr.reduce((acc, curr) =\u003e acc + curr, 0); // here acc is like the sum variable in sum+= arr[i] // Think like - reduce this array, and accumulate the value in acc. // Pick the current element as curr, and perform some // operation on curr and acc. // Starting with an initial val of 0 here. console.log(total); // 10 Understanding Splice function: // Splice is used to modify the original array - insert, delete opertations. // Syntax: // array.splice(starthere, deleteCount, item1, item2, ..., itemN) // startHere - starts to modify consecutively from this element // delete these many from startHere and insert the remaining after it // Remember it need not match delete count with N items, // the x number of elements are deleted and N-x are inserted. const items = ['a', 'b', 'c', 'd']; items.splice(1, 2, 'x', 'y', 'z'); // delete 2 and insert remaining console.log(items); // ['a', 'x', 'y', 'z','d'] Finding all users which satisfy a condition: We can use the some method in above requirement. The some() method is an iterative method. It calls a provided callbackFn function once for each element in an array, until the callbackFn returns a truthy value. If such an element is found, some() immediately returns true and stops iterating through the array.\nconst isValExists = (val, users) =\u003e users.some((user) =\u003e user.name === val) // Or see the below example from Mozilla docs where we are trying to check // if the array is strictly increasing or not. // filter takes only positive elements some uses num as current element, // idx as index, and arr to access the array returned // by filter in the intermediate step. const numbers = [3, -1, 1, 4, 1, 5]; const isIncreasing = !numbers .filter((num) =\u003e num \u003e 0) .some((num, idx, arr) =\u003e { // Without the arr argument, there's no way to easily access the // intermediate array without saving it to a variable. if (idx === 0) return false; return num \u003c= arr[idx - 1]; }); console.log(isIncreasing); // false Implement a range function which takes start, end and generates an array with those values // Method one: Using for loop const genRange = (start, end) =\u003e{ const result = []; for(let i = start, i \u003c=end; i++){ result.push(i); } return result; } // Method two: Using array.keys method const genRange = (start,end) =\u003e { // spreading an array of size e-s+1 keys will give us the value easily, // but we need to map it from 0 to n-1 to a to b hence we use map. return [...Array(end-start+1).keys()].map((item) =\u003e item+start); } // end - start +1 - number of elements inclusive of s and e, // .keys() generates an iterator, and ... unrolls it to 0,1,2,3 etc // .values() will give us undefined as values are not given to any element. // .map() will map it in the right range. // If we do not need to map, we could directly do - // Make an array of keys as values, and then unrolling those values into a new array. // [...[...Array(end-start+1).keys()].values()] // Iterable deep dive about iterators, Array is inherently also an Object in JS: // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols Summary Function Name Basic Syntax One-Line Use Case Mutates Original Array Returns a Value forEach arr.forEach((item, idx, arr) =\u003e { ... }) arr.forEach(item =\u003e console.log(item)) No No map arr.map((item, idx, arr) =\u003e { ... }) arr.map(item =\u003e item.name) No Yes (new array) filter arr.filter((item, idx, arr) =\u003e { ... }) arr.filter(item =\u003e item.age \u003e 30) No Yes (new array) reduce arr.reduce((acc, curr, idx, arr) =\u003e { ... }, initVal) arr.reduce((acc, curr) =\u003e acc + curr, 0) No Yes (single value) sort arr.sort((a, b) =\u003e { ... }) arr.sort((a, b) =\u003e a.age - b.age) Yes Yes (same array) splice arr.splice(start, deleteCount, ...items) arr.splice(1, 2, 'x', 'y') Yes Yes (array of removed items) slice arr.slice(start, end) arr.slice(1, 3) No Yes (new array) some arr.some((item, idx, arr) =\u003e { ... }) arr.some(item =\u003e item.active) No Yes (boolean) every arr.every((item, idx, arr) =\u003e { ... }) arr.every(item =\u003e item.active) No Yes (boolean) find arr.find((item, idx, arr) =\u003e { ... }) arr.find(item =\u003e item.id === 2) No Yes (first matched item or undefined) findIndex arr.findIndex((item, idx, arr) =\u003e { ... }) arr.findIndex(item =\u003e item.id === 2) No Yes (index or -1) flat arr.flat(depth) [1, [2, [3]]].flat(2) No Yes (new flattened array) concat arr1.concat(arr2) arr1.concat(arr2) No Yes (new array) includes arr.includes(value) arr.includes(5) No Yes (boolean) indexOf arr.indexOf(value) arr.indexOf('a') No Yes (index or -1) join arr.join(separator) arr.join(', ') No Yes (string) reverse arr.reverse() arr.reverse() Yes Yes (same array) push arr.push(item) arr.push('new') Yes Yes (new length) fill arr.fill(value, start, end) arr.fill(0, 1, 3) Yes Yes (same array) Array.from Array.from(arrayLike, mapFn?) Array.from('123', Number) No Yes (new array) Array.isArray Array.isArray(value) Array.isArray([1, 2]) No Yes (boolean) 2: null vs undefined Interviewer Perspective How well do you understand type system and usage clarity while handling API responses or default values while error handling.\nAnswer Undefined This is a primitive value, with type as undefined. The variable is declared but not assigned yet. It is set by JS engine automatically.\nnull This is a null value but weirdly it has a type of Object in JS. It is explicitly set to variables manually. Also a falsy value by nature.\nPlease note (lose equality) JS console.log(null == undefined) will return true as both are false values. In essence undefined is a parallel to notion of missing, while null is to empty. In the temporal dead zone, the value of any variable is undefined. ie, declared but not assigned any value but tried to log - it will show undefined.\n3: Write a function multiply(a)(b) which returns product of a and b Interviewer Perspective The interviewer wishes to check your grasp on concept of currying and it’s BTS.\nCorrect Answer Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of nested functions, each taking a single argument at a time.\nLet me write the code:\nconst multiply = (a) =\u003e{ return (b) =\u003e{ return a*b}; } // OR const multiply = a =\u003e b =\u003e a*b; But what is going on here? We return functions as the result of a function, and to which we pass further parameter values. This can be expanded recursively as well.\nfunction currySum(expectedArgsCount) { const args = []; function curried(...newArgs) { args.push(...newArgs); // If we have enough arguments, compute the sum if (args.length \u003e= expectedArgsCount) { return args.slice(0, expectedArgsCount).reduce((a, b) =\u003e a + b, 0); } // Otherwise, return the curried function again return curried; } return curried; } const sum = currySum(3); console.log(sum(1)(2)(3)); // 6 console.log(sum(1, 2)(3)); // 6 console.log(sum(1)(2, 3)); // 6 console.log(sum(1, 2, 3)); // 6 Need? It can be used in setInputValue or to apply a function on another function, basically Higher Order functions.\nconst hasRole = role =\u003e user =\u003e user.roles.includes(role); const users = [ { name: 'Alice', roles: ['admin', 'user'] }, { name: 'Bob', roles: ['user'] } ]; const admins = users.filter(hasRole('admin')); // Alice // Example 2 const getThisPropertyObject = curry((prop, obj) =\u003e obj[prop]); const getAge = get(\"age\"); const customFilter = curry((fn,val) =\u003e val.map(fn)); customFilter(getAge, [{age:2}]) // 2 4: Shuffle an Array of Objects Interviewer Perspective They probably want to check language and slight algorithmic profficiency.\nCorrect Answer The approach I am using here is to attach one random value to the object in an array, and then sort based on this random value.\nCode Example const shuffler = (input) =\u003e { return input .map(item) =\u003e ({randomVal:Math.random(), inputVal:item}) .sort(item1,item2)=\u003e (item1.randomVal-item2.randomVal) .map((i) =\u003e i.inputVal); // map and attach randomVal property // sort based on the random value distribution // map and remove that random val again. } 5: Behavior of this keyword There can be 3 places where this is used.\nInside a function Inside an Object Inside a Class Inside a nested function in a class 1. Inside a function When we use this inside a Standalone function, in strict mode this would be undefined but in non-strict mode this will refer to the global/window object.\nfunction useOfThis() { console.log(this); } useOfThis(); // window 2. Inside an Object Let us define an object with some properties and a function which uses this to refer to one of these properties. In this case, the this keyword will always refer to the object which calls it. Here chocolateCake.\nconst chocolateCake = { ingredients: [\"semolina\", \"baking powder\", \"cocoa\", \"powdered sugar\", \"chocolate syrup\", \"dry fruits\"], steps: \"Bake something like you would bake a cake. :)\", cook() { // do something console.log(\"Cake is baked using\", this.ingredients); } }; chocolateCake.cook(); // output - Cake is baked using [\"semolina\", \"baking powder\" .....] NOT SO SIMPLE\nconst cookLater = chocolateCake.cook; cookLater(); // this is global or undefined in this case. :) // we have detached the method from its object and storing it as a plain function. // Now cookLater() is called without any object context, so this becomes: // undefined in strict mode or the global object (window) in non-strict mode 3. Inside a Class Method: This is simple, the this keyword will associate itself with the closest object with which it is called.\nclass Cake { constructor(flavor) { this.flavor = flavor; } bake() { console.log(\"Oven started... and the smell of\", this.flavor, \"cake is coming to you!\"); } } const ananas = new Cake(\"ananas\"); ananas.bake(); 4. A function nested inside a Class Method (Tricky one) In case we have a function nested inside a class function, and we try to call the class function with help of an object, the this keyword will go crazy. It starts to behave like a normal function and so it outputs undefined in strict mode or global object in non-strict mode.\nReason: First let us understand why? The reason this inside a nested function doesn’t refer to the class instance is because this is dynamically bound based on how a function is called, not where it is written unless it’s an arrow function which borrows the scope of it’s just outer lexical scope for this.\nclass Cake { constructor() { this.cakeSize = 1; } bake() { function makeVegan() { console.log(\"The vegan cake size is \", this.cakeSize); } makeVegan(); } } const veganCake = new Cake(); veganCake.bake(); // Output - The vegan cake size is undefined How to solve? There are three possible methods to resolve it: a. using arrow function or b. defining this_ as this just outside the function c. use .bind()\n//a. Using arrow function bake() { const makeVegan = () =\u003e { console.log(\"The vegan cake size is \", this.cakeSize); }; makeVegan(); } //b. Using this_ bake() { const this_ = this function makeVegan() { console.log(\"The vegan cake size is \", this.cakeSize); } makeVegan(); } //c. Using .bind() bake() { const makeVegan = () =\u003e { console.log(\"The vegan cake size is \", this.cakeSize); }; makeVegan.bind(this)(); } Let us recap: Context this refers to Function window or global / undefined if strict Object method The object itself Class method The class instance Function inside class method Global or undefined (NOT class instance) Arrow function Lexically inherited from parent scope 6: How to Promisify A Callback based Function? Interviewer Perspective Migration from ES5 to ES6 of some older apis which are still needed but do not have async/await implementation requires this as a daily task sometimes to promisify before using it directly.\nCorrect Answer Approach: Goal - to have a function which converts a legacy callback based functions to promise based functions. Implies - return type is a function, and arguments would be legacy callback. Steps for above would be:\nMake a general purpose promisify function which will take a callback and return an equivalent function which mimics async/await behaviour. Within promisify return a function, which takes required arguments for our legacy callback. Within this function, return a promise, in which we can call our legacy callback, and resolve or reject based on it’s response. Code Example const promisify = (fn) =\u003e { // Return a new function that wraps `fn` inside a Promise return function (...args) { // Create and return a new Promise return new Promise((resolve, reject) =\u003e { // Call the original function `fn` with all original args // Add a callback as the last argument to handle result/error fn(...args, (err, result) =\u003e { // If there's an error, reject the Promise if (err) reject(err); // Otherwise, resolve it with the result else resolve(result); }); }); }; }; Let us try to understand how above will be used and the impact it brings to our code:\n// if odd --\u003e Odd Num Error, else Resolved. function onlyEvenNumResolves(num, my_callback) { setTimeout(() =\u003e { if (num % 2 == 1) return my_callback(\"Odd Num Error\", null); else my_callback(null, { result: \"Resolution achieved!\" }); }, 2000); } // Converting this using our promisify const promiseBasedEvenNumResolves = promisify(onlyEvenNumResolves); const runMyPromisifiedFunction = async () =\u003e { let num = 10; try { const result = await promiseBasedEvenNumResolves(num); console.log(\"Success\", result); } catch (err) { console.log(\"Error: \", err); } }; runMyPromisifiedFunction(); // Concept Explanation Promisify Convert a callback-style function to return a Promise Promise Modern async pattern that lets you write cleaner async code resolve() Marks the Promise as successful reject() Marks the Promise as failed 7: What do you know about sequential and parallel promises? The calls to api are made in asynchronous pattern. Weather one result depends on the other allows us to choose the pattern in which we can make the api calls. If my api call 2 has some dependency on api call 1, I would perform the operations sequentially, otherwise we can opt for parallel execution to improve performance as the calls are independent of each other.\nLet us take example of 2 dummy API one will fetch our user information and other will fetch Orders made by a user information.\nconst fetchUser = () =\u003e { return new Promise((resolve) =\u003e { setTimeout( () =\u003e resolve([ { userId: 1, name: \"Alice\" }, { userId: 2, name: \"Max\" } ]), 1000 ); }); }; const fetchOrders = () =\u003e { return new Promise((resolve) =\u003e { setTimeout( () =\u003e resolve([ { userId: 1, OrderId: 101, item: \"Laptop\" }, { userId: 2, OrderId: 202, item: \"Deodorant\" } ]), 1500 ); }); }; Since the APIs are independent in logic and syntax as well. We can go for parallel execution. And in that process, Promise.all() function helps us to execute them in parallel.\nconst fetchInParallelAsync = async () =\u003e { const [user, orders] = await Promise.all([fetchUser(), fetchOrders()]); console.log(\"Parallel Async:\", { user, orders }); // Takes appx max of all API calls } Or we can opt for sequential execution to see how it is different:\nconst fetchSequentiallyAsync = async =\u003e () { const user = await fetchUser(); const orders = await fetchOrders(); console.log(\"Sequential Async:\", { user, orders }); // Takes appx sum of all API calls time. } But since JS is single threaded how are we able to execute something in Parallel? Javascript is single threaded language, so it is not exactly parallel execution on multiple threads. Instead this is concurrency which gives us the illusion of parallel execution. These api network calls, timeouts are offloaded to the browser environment of Web API or Libuv in NodeJS and once the output of these non-blocking operations is ready which is kept track off by the browser environment, we take them back in our call stack of event loop for execution. Remember the following terms:\nComponent Description Call Stack JS code is executed here, synchronously, one at a time Web APIs Provided by the browser (e.g., fetch, setTimeout, etc.) Callback / MacroTask Queue Where async callbacks are queued when ready Microtask Queue Where Promise.then, async/await results go Event Loop Orchestrates execution between stack and queues In this piece of code let us deep dive into the steps which take place when we use Promise.all().\nconst fetchInParallelAsync = async () =\u003e { const [user, orders] = await Promise.all([fetchUser(), fetchOrders()]); console.log(\"Parallel Async:\", { user, orders }); } fetchInParallelAsync function enters our call stack, and waits for it’s execution by the JS Engine. On it’s right time, 2 non-blocking API calls are sent to the WebAPI of browser, which processes the network requests in it’s own environment without disturbing our JS Thread. Our thread is free and it can take up the next task as scheduled in the call stack, if the stack is empty only then it goes to Micro task or later macro task queue or if both are empty, it can check in the call stack again. Web API is continously checking if the result of both calls is ready or not. Once it is ready, the Promises are added to the Micro Task queue for execution. JS Engine picks them up, creates a new Promise for promise.All() and sends back the result to us as response of both the apis. Note that we use promise.all() if we want to receive results of all promises whereas, we use promise.allSettled() if we want results of all the APIs whether they return response or error out.\nTime 0ms--\u003e 100ms--\u003e 200ms --\u003e and so on [fetchUser() in call stack] --\u003e Web API handling request --\u003e Done @ 1000ms --\u003e Microtask Queue --\u003e Wait [fetchOrders() in call stack] --\u003e Web API handling request --\u003e Done @ 1500ms --\u003e Microtask Queue --\u003e Wait After ~1500ms --\u003e All microtasks resolved and Event Loop resumes function Now we console.log({ user, orders }) is printed Take a look at the following commonly used Promise handling methods:\nFunction Syntax Description Example Promise.all Promise.all([p1, p2]) Waits for all to resolve; fails on one Parallel API calls Promise.race Promise.race([p1, p2]) Resolves/rejects as soon as one settles Timeout handling Promise.allSettled Promise.allSettled([p1, p2]) Resolves when all settle, never fails Report all outcomes Promise.any Promise.any([p1, p2]) Resolves with first fulfilled, fails if all reject Fastest successful result Promise.resolve Promise.resolve(value) Creates a resolved promise Simulate fulfilled async response Promise.reject Promise.reject(error) Creates a rejected promise Simulate an error ",
+  "wordCount" : "3644",
+  "inLanguage": "en",
+  "datePublished": "2025-06-19T10:00:00+05:30",
+  "dateModified": "2025-06-19T10:00:00+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://saketbyte.github.io/posts/javascript-interview-questions/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "saketbyte",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saketbyte.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -73,7 +139,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
+            <a href="https://saketbyte.github.io/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -99,27 +165,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://saketbyte.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://saketbyte.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://saketbyte.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://saketbyte.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://saketbyte.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -130,7 +196,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://saketbyte.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://saketbyte.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       JavaScript Interview Questions
     </h1>
@@ -961,18 +1027,18 @@ Remember the following terms:</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
-      <li><a href="http://localhost:1313/tags/interview/">Interview</a></li>
-      <li><a href="http://localhost:1313/tags/coding/">Coding</a></li>
-      <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
+      <li><a href="https://saketbyte.github.io/tags/javascript/">JavaScript</a></li>
+      <li><a href="https://saketbyte.github.io/tags/interview/">Interview</a></li>
+      <li><a href="https://saketbyte.github.io/tags/coding/">Coding</a></li>
+      <li><a href="https://saketbyte.github.io/tags/frontend/">Frontend</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/debounce-and-throttle/">
+  <a class="prev" href="https://saketbyte.github.io/posts/debounce-and-throttle/">
     <span class="title">« Prev</span>
     <br>
     <span>Debounce and Throttle</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/resume/">
+  <a class="next" href="https://saketbyte.github.io/posts/resume/">
     <span class="title">Next »</span>
     <br>
     <span>Resume</span>
@@ -984,7 +1050,7 @@ Remember the following terms:</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">saketbyte</a></span> · 
+        <span>&copy; 2025 <a href="https://saketbyte.github.io/">saketbyte</a></span> · 
 
     <span>
         Powered by

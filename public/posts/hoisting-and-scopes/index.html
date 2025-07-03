@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Hoisting and Scopes | saketbyte</title>
 <meta name="keywords" content="JavaScript, Interview, Coding, Frontend">
 <meta name="description" content="Clearing the confusion around Hoisting, scopes, var let const etc.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/hoisting-and-scopes/">
+<link rel="canonical" href="https://saketbyte.github.io/posts/hoisting-and-scopes/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.e2798bd88395b9feeb2a4d73d504608d19dd39a782d06959c3fdddef0230dd44.css" integrity="sha256-4nmL2IOVuf7rKk1z1QRgjRndOaeC0GlZw/3d7wIw3UQ=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://saketbyte.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://saketbyte.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://saketbyte.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://saketbyte.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://saketbyte.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/hoisting-and-scopes/">
+<link rel="alternate" hreflang="en" href="https://saketbyte.github.io/posts/hoisting-and-scopes/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,7 +55,73 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="https://saketbyte.github.io/posts/hoisting-and-scopes/">
+  <meta property="og:site_name" content="saketbyte">
+  <meta property="og:title" content="Hoisting and Scopes">
+  <meta property="og:description" content="Clearing the confusion around Hoisting, scopes, var let const etc.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-22T13:07:39+05:30">
+    <meta property="article:modified_time" content="2025-06-22T13:07:39+05:30">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Interview">
+    <meta property="article:tag" content="Coding">
+    <meta property="article:tag" content="Frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hoisting and Scopes">
+<meta name="twitter:description" content="Clearing the confusion around Hoisting, scopes, var let const etc.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://saketbyte.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hoisting and Scopes",
+      "item": "https://saketbyte.github.io/posts/hoisting-and-scopes/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hoisting and Scopes",
+  "name": "Hoisting and Scopes",
+  "description": "Clearing the confusion around Hoisting, scopes, var let const etc.",
+  "keywords": [
+    "JavaScript", "Interview", "Coding", "Frontend"
+  ],
+  "articleBody": "Table of Contents Hoisting Hoisting Behavior Scope Related Behaviour of Variables Temporal Dead Zone Fun Question Summary Hoisting (Bubble up and fill in the fragrance of undefined! XD)\nIn JavaScript, hoisting refers to the behavior where variable declarations are moved to the top of their containing scope—either function or block—during the compilation phase. However, how this hoisting occurs differs significantly between var, let, and const.\nHoisting Behavior of variables var Variables Variables declared using var are hoisted and initialized with undefined. This means that even if you try to access the variable before its declaration, the code won’t throw an error; instead, you’ll get undefined.\nconsole.log(x); // undefined var x = 10; let and const Variables Unlike var, variables declared with let and const are also hoisted, but they are not initialized during hoisting. Attempting to access them before their actual declaration will result in a ReferenceError.\nconsole.log(x); // ReferenceError: Cannot access 'x' before initialization let x = 10; This behavior is due to the Temporal Dead Zone (TDZ), a concept introduced in ES6 to make JavaScript behavior more predictable and reduce the likelihood of bugs.\nScope Related Behavior of variables Scope is not just about accessibility of a variable, but we also need to check lifetime, environment and bindings of the given variable in JS.\nType Narrowest Scope it can exhibit Meaning Reassignment var function available through out the function even if declared within a block ({ }) inside it. Yes let block Not available beyond the block ({ }) in which it is defined. Yes const block Not available beyond the block ({ }) in which it is defined. Mutable but cannot be reassigned. If we declare them in the global scope, let and const (and class) will also create global declarations that is why I have mentioned narrowest scope it can exhibit. Where this gets confusing is, unlike var and function, when let, const, and class are used in the global scope, they do not create global properties, whereas var and function do.\nvar x // global { var y // also global as it can not exhibit the narrow scope of blocks, only of functions. } Remember above and the hoisting concept for the fun question in the end.\nTemporal Dead Zone The Temporal Dead Zone is a period between the start of a block scope and the point where the variable is declared and initialized. During this period, any reference to the variable will throw a ReferenceError.\nKey Characteristics of TDZ: Declaration Phase: When let or const is encountered, the variable is hoisted but left uninitialized. Initialization Phase: The variable gets initialized only when execution reaches the line of declaration. Accessing During TDZ: Accessing the variable before initialization results in a ReferenceError. Example: console.log(x); // ReferenceError let x = 10; In this example, x is hoisted, but not initialized. Trying to log it before the let declaration triggers a ReferenceError because it’s still in the TDZ.\nCoding standards To avoid running into errors caused by the Temporal Dead Zone:\nAlways declare your variables at the top of their scope before using them. Prefer using let and const over var for clearer and more predictable code. Improved Example: let x; // Declare x at the beginning of the scope console.log(x); // undefined (no error) x = 10; // Initialize x In this case, although x is not yet assigned a value at the time of logging, it’s declared properly and no error occurs because it’s not being accessed before the declaration line.\nFun Question: Guess the outputs of the following:\nCode A\nfor (var i = 0; i \u003c 5; i++) { setTimeout(() =\u003e console.log(i), 0); } Code B\nfor (let i = 0; i \u003c 5; i++) { setTimeout(() =\u003e console.log(i), 0); } Answer Remember that var is function scoped, so the same i is shared across all iterations. By the time setTimeout runs, the loop has completed, and i is 3. While let is block scoped, so a new i is created per iteration. Each closure in setTimeout captures the correct value of i at that time.\nWait let me provide some more background information for this:\nClosure A closure is a function that “remembers” the variables from where it was defined, even after that outer scope has finished execution. It is like remembering the taste of chocolate even if it has finished. XD Remember that each function will have an enviornment record in the call stack.\nTake a look at this code:\nfunction chocoPie() { let whiteChocolate = 1; function melted(){ const taste = ++whiteChocolate; return taste; } return melted; } const afterTaste = chocoPie(); // we are storing a reference to the melted function, even when the outer function has completed it's execution. Above, the execution environment of chocoPie (outer function) is retained as a reference to the melted(inner) function even though the call of chocoPie is done. So we have access to the value of whiteChocolate even after the outer function has completed it’s execution. This is called Closure, a combination of function objects which retains the environment in function call stack. Happens in nested functions always.\nNow here, the difference between var and let is not that clear, because whiteChocolate is function scoped for both. Both var and let will pass through this funnel of scope.\nBack to fun question: Note: In code A and code B examples, let is in it’s narrowest scope ie block, while var behaves in it’s function scope. Hence the difference arises.\nExecution Context : Every time a function runs, a new execution context is created and pushed to the call stack. The execution context includes a Lexical Environment that holds variable bindings.\nLexical Environment : A Lexical Environment is a structure that holds identifiers (variables/functions) and references to outer environments (called the outer environment reference). Think of it like a scope + closure reference.\nBehind the Scences : The for loop code runs first — no setTimeout fires yet. After 0ms, setTimeout callbacks are put into the task queue. When the call stack is empty, each callback is pulled from the queue and executed in its own execution context.\nvar Now var i is hoisted and declared in the global execution context (or function context if inside a function). There is only one i shared by all iterations. Each time setTimeout() is called, a callback function is created, but it closes over the same environment, i.e., the same i. So when the callbacks run, the loop has already completed, and i is now 5. All callbacks log 5, because they all reference the same i from the shared environment.\nlet Unlike var, let is block-scoped. The JavaScript engine treats this for loop as creating a new block-scoped environment for each iteration. For every iteration, a new Lexical Environment is created with a fresh i, unique to that loop iteration. The arrow function passed to setTimeout() closes over that unique environment. So when the callbacks run: Each closure has its own i, so they log 0, 1, 2, 3, 4.\nHomework question: const counter = () =\u003e { let count = 0; return{ increase: (step = 1) =\u003e { count+=step;}, getValue: () =\u003e { return count;}; }; }; // Think about how closures are working in above. Solution:\n// Test like this: const counter = () =\u003e { let count = 0; return { increase: (step = 1) =\u003e { count += step; }, getValue: () =\u003e { return count; } }; }; const f = counter(); f.increase(); console.log(f.getValue()); f.increase(); console.log(f.getValue()); f.increase(); console.log(f.getValue()); // output- 1 2 3 Summary var is hoisted and initialized to undefined. So you can refer to a var variable and it will output undefined. let and const are hoisted but not initialized, leading to a TDZ. So you can refer but it will throw ReferenceError. YES, var, let and const all are hoisted but var is not moved to Temporal Dead Zone. Accessing let or const variables before their declaration throws a ReferenceError. TDZ helps enforce cleaner coding by encouraging early declarations and preventing undefined access. ",
+  "wordCount" : "1346",
+  "inLanguage": "en",
+  "datePublished": "2025-06-22T13:07:39+05:30",
+  "dateModified": "2025-06-22T13:07:39+05:30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://saketbyte.github.io/posts/hoisting-and-scopes/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "saketbyte",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saketbyte.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -73,7 +139,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
+            <a href="https://saketbyte.github.io/" accesskey="h" title="saketbyte (Alt + H)">saketbyte</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -99,27 +165,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://saketbyte.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://saketbyte.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://saketbyte.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://saketbyte.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://saketbyte.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -130,7 +196,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://saketbyte.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://saketbyte.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Hoisting and Scopes
     </h1>
@@ -332,18 +398,18 @@ Remember that each function will have an enviornment record in the call stack.</
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
-      <li><a href="http://localhost:1313/tags/interview/">Interview</a></li>
-      <li><a href="http://localhost:1313/tags/coding/">Coding</a></li>
-      <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
+      <li><a href="https://saketbyte.github.io/tags/javascript/">JavaScript</a></li>
+      <li><a href="https://saketbyte.github.io/tags/interview/">Interview</a></li>
+      <li><a href="https://saketbyte.github.io/tags/coding/">Coding</a></li>
+      <li><a href="https://saketbyte.github.io/tags/frontend/">Frontend</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/deepcompare/">
+  <a class="prev" href="https://saketbyte.github.io/posts/deepcompare/">
     <span class="title">« Prev</span>
     <br>
     <span>Compare Deeply Nested JS objects Interview Question</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/debounce-and-throttle/">
+  <a class="next" href="https://saketbyte.github.io/posts/debounce-and-throttle/">
     <span class="title">Next »</span>
     <br>
     <span>Debounce and Throttle</span>
@@ -355,7 +421,7 @@ Remember that each function will have an enviornment record in the call stack.</
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">saketbyte</a></span> · 
+        <span>&copy; 2025 <a href="https://saketbyte.github.io/">saketbyte</a></span> · 
 
     <span>
         Powered by

@@ -2,7 +2,7 @@
 title: "Compare Deeply Nested JS objects Interview Question"
 date: 2025-06-26T14:12:22+05:30
 draft: false
-description: "A short summary of the post"
+description: "A commonly asked interview question to compare dynamically structured nested objects"
 tags: ["JavaScript", "Interview", "Coding", "Frontend"]
 categories: ["Javascript", "Interview Prep"]
 ---
@@ -306,9 +306,12 @@ function deepCompare(a: any, b: any): boolean {
 
 	// Handle Set
 	if (a instanceof Set && b instanceof Set) {
-		if (a.size !== b.size) return false;
-		for (const val of a) if (!b.has(val)) return false;
-		return true;
+			if (a.size !== b.size) return false;
+			for (let item of a) {
+				if (![...b].some((el) => deepCompareIterative(el, item))) return false;
+			}
+			continue;
+		}
 	}
 
 	// Handle Map - recursive call as nesting can occur

@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Coding on saketbyte</title>
-    <link>http://localhost:1313/tags/coding/</link>
+    <link>https://saketbyte.github.io/tags/coding/</link>
     <description>Recent content in Coding on saketbyte</description>
     <generator>Hugo -- 0.147.8</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jun 2025 14:12:22 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jul 2025 20:58:12 +0530</lastBuildDate>
+    <atom:link href="https://saketbyte.github.io/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Promise Aggregator Functions Implementation</title>
+      <link>https://saketbyte.github.io/posts/promise.all-implementation/</link>
+      <pubDate>Wed, 02 Jul 2025 20:58:12 +0530</pubDate>
+      <guid>https://saketbyte.github.io/posts/promise.all-implementation/</guid>
+      <description>This blog talks about implementing Promise api functions from scratch in JS to help understand their working and usage</description>
+    </item>
     <item>
       <title>Compare Deeply Nested JS objects Interview Question</title>
-      <link>http://localhost:1313/posts/deepcompare/</link>
+      <link>https://saketbyte.github.io/posts/deepcompare/</link>
       <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/posts/deepcompare/</guid>
-      <description>A short summary of the post</description>
+      <guid>https://saketbyte.github.io/posts/deepcompare/</guid>
+      <description>A commonly asked interview question to compare dynamically structured nested objects</description>
     </item>
     <item>
       <title>Hoisting and Scopes</title>
-      <link>http://localhost:1313/posts/hoisting-and-scopes/</link>
+      <link>https://saketbyte.github.io/posts/hoisting-and-scopes/</link>
       <pubDate>Sun, 22 Jun 2025 13:07:39 +0530</pubDate>
-      <guid>http://localhost:1313/posts/hoisting-and-scopes/</guid>
+      <guid>https://saketbyte.github.io/posts/hoisting-and-scopes/</guid>
       <description>Clearing the confusion around Hoisting, scopes, var let const etc.</description>
     </item>
     <item>
       <title>JavaScript Interview Questions</title>
-      <link>http://localhost:1313/posts/javascript-interview-questions/</link>
+      <link>https://saketbyte.github.io/posts/javascript-interview-questions/</link>
       <pubDate>Thu, 19 Jun 2025 10:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/posts/javascript-interview-questions/</guid>
+      <guid>https://saketbyte.github.io/posts/javascript-interview-questions/</guid>
       <description>Frequently asked JavaScript interview questions with explanations and code examples.</description>
     </item>
   </channel>

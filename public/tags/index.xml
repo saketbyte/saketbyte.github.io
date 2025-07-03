@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on saketbyte</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://saketbyte.github.io/tags/</link>
     <description>Recent content in Tags on saketbyte</description>
     <generator>Hugo -- 0.147.8</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jun 2025 14:12:22 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jul 2025 20:58:12 +0530</lastBuildDate>
+    <atom:link href="https://saketbyte.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coding</title>
-      <link>http://localhost:1313/tags/coding/</link>
-      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/tags/coding/</guid>
+      <link>https://saketbyte.github.io/tags/coding/</link>
+      <pubDate>Wed, 02 Jul 2025 20:58:12 +0530</pubDate>
+      <guid>https://saketbyte.github.io/tags/coding/</guid>
       <description></description>
     </item>
     <item>
       <title>Frontend</title>
-      <link>http://localhost:1313/tags/frontend/</link>
-      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/tags/frontend/</guid>
+      <link>https://saketbyte.github.io/tags/frontend/</link>
+      <pubDate>Wed, 02 Jul 2025 20:58:12 +0530</pubDate>
+      <guid>https://saketbyte.github.io/tags/frontend/</guid>
       <description></description>
     </item>
     <item>
       <title>Interview</title>
-      <link>http://localhost:1313/tags/interview/</link>
-      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/tags/interview/</guid>
+      <link>https://saketbyte.github.io/tags/interview/</link>
+      <pubDate>Wed, 02 Jul 2025 20:58:12 +0530</pubDate>
+      <guid>https://saketbyte.github.io/tags/interview/</guid>
       <description></description>
     </item>
     <item>
       <title>JavaScript</title>
-      <link>http://localhost:1313/tags/javascript/</link>
-      <pubDate>Thu, 26 Jun 2025 14:12:22 +0530</pubDate>
-      <guid>http://localhost:1313/tags/javascript/</guid>
+      <link>https://saketbyte.github.io/tags/javascript/</link>
+      <pubDate>Wed, 02 Jul 2025 20:58:12 +0530</pubDate>
+      <guid>https://saketbyte.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>Interesting</title>
-      <link>http://localhost:1313/tags/interesting/</link>
+      <link>https://saketbyte.github.io/tags/interesting/</link>
       <pubDate>Fri, 20 Jun 2025 08:30:38 +0530</pubDate>
-      <guid>http://localhost:1313/tags/interesting/</guid>
+      <guid>https://saketbyte.github.io/tags/interesting/</guid>
       <description></description>
     </item>
     <item>
       <title>Resume</title>
-      <link>http://localhost:1313/tags/resume/</link>
+      <link>https://saketbyte.github.io/tags/resume/</link>
       <pubDate>Wed, 18 Jun 2025 18:19:42 +0530</pubDate>
-      <guid>http://localhost:1313/tags/resume/</guid>
+      <guid>https://saketbyte.github.io/tags/resume/</guid>
       <description></description>
     </item>
   </channel>
